@@ -11,6 +11,8 @@ import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
 import { Posts } from './collections/Posts'
 import { Categories } from './collections/Categories'
+import { Header } from './Header/config'
+import { Footer } from './Footer/config'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -22,9 +24,13 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Pages, Posts, Categories, Media, Users], 
+  collections: [Pages, Posts, Categories, Media, Users],
+  globals: [Header, Footer],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
+  typescript: {
+    outputFile: path.resolve(dirname, 'payload-types.ts'),
+  },
   db: postgresAdapter({
     pool: {
       connectionString: process.env.DATABASE_URL || '',
