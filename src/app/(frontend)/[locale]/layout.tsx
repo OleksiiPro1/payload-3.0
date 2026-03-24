@@ -22,29 +22,27 @@ const montserrat = Montserrat({
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode()
 
-
   const payload = await getPayload({ config })
-  const footerData = await payload.findGlobal({
-    slug: 'footer',
-    draft: isEnabled,
-  })
-  
+  let footerData = null
+
+  try {
+    footerData = await payload.findGlobal({
+      slug: 'footer',
+      draft: isEnabled,
+    })
+  } catch {
+    footerData = null
+  }
 
   return (
-    <html lang="de" className={cn(montserrat.variable)} suppressHydrationWarning>
-      <head><InitTheme /></head>
-      <body className="antialiased font-sans">
-        <Providers>
-          <AdminBar adminBarProps={{ preview: isEnabled }} />
-          
-          
-          <Header /> 
-          
-          <main>{children}</main>
-          
-           <FooterBlock {...footerData} /> 
-        </Providers>
-      </body>
-    </html>
+    <div className={cn(montserrat.variable, 'antialiased font-sans')}>
+      <InitTheme />
+      <Providers>
+        <AdminBar adminBarProps={{ preview: isEnabled }} />
+        <Header />
+        {children}
+        <FooterBlock {...(footerData || {})} />
+      </Providers>
+    </div>
   )
 }
