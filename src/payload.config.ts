@@ -4,6 +4,7 @@ import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
+import { formBuilderPlugin } from '@payloadcms/plugin-form-builder' // 1. Импорт плагина
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
@@ -21,18 +22,21 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  // Добавляем их в список
   collections: [Pages, Posts, Categories, Media, Users], 
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
-  typescript: {
-    outputFile: path.resolve(dirname, 'payload-types.ts'),
-  },
   db: postgresAdapter({
     pool: {
       connectionString: process.env.DATABASE_URL || '',
     },
   }),
   sharp,
-  plugins: [],
+  // 2. Добавляем секцию плагинов
+  plugins: [
+    formBuilderPlugin({
+      fields: {
+        payment: false, // если не нужна оплата в формах
+      },
+    }),
+  ],
 })
