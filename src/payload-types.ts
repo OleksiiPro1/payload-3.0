@@ -1485,23 +1485,13 @@ export interface Header {
  */
 export interface Footer {
   id: number;
-  navItems?:
+  address?: string | null;
+  phone?: string | null;
+  email?: string | null;
+  openingHours?:
     | {
-        link: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?:
-            | ({
-                relationTo: 'pages';
-                value: number | Page;
-              } | null)
-            | ({
-                relationTo: 'posts';
-                value: number | Post;
-              } | null);
-          url?: string | null;
-          label: string;
-        };
+        day: string;
+        hours: string;
         id?: string | null;
       }[]
     | null;
@@ -1537,18 +1527,14 @@ export interface HeaderSelect<T extends boolean = true> {
  * via the `definition` "footer_select".
  */
 export interface FooterSelect<T extends boolean = true> {
-  navItems?:
+  address?: T;
+  phone?: T;
+  email?: T;
+  openingHours?:
     | T
     | {
-        link?:
-          | T
-          | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
-            };
+        day?: T;
+        hours?: T;
         id?: T;
       };
   updatedAt?: T;

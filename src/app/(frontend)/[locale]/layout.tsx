@@ -1,7 +1,7 @@
 export const dynamic = 'force-dynamic'
 import React from 'react'
  import { Header } from '@/Header/Component' 
- import { FooterBlock } from '@/blocks/Footer/FooterBlock'
+ import { Footer } from '@/Footer/Component'
 import { Providers } from '@/providers'
 import { InitTheme } from '@/providers/Theme/InitTheme'
 import { AdminBar } from '@/components/AdminBar'
@@ -41,7 +41,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <AdminBar adminBarProps={{ preview: isEnabled }} />
         <Header />
         {children}
-        <FooterBlock {...(footerData || {})} />
+        <Footer />
       </Providers>
     </div>
   )
