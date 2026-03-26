@@ -2,20 +2,23 @@ import { getCachedGlobal } from '@/utilities/getGlobals'
 import Link from 'next/link'
 import React from 'react'
 
-import type { Footer } from '@/payload-types'
+import type { Footer as FooterType } from '@/payload-types'
 
 import { ThemeSelector } from '@/providers/Theme/ThemeSelector'
 import { CMSLink } from '@/components/Link'
 import { Logo } from '@/components/Logo/Logo'
 
 export async function Footer() {
-  const footerData: Footer = await getCachedGlobal('footer', 1)()
+  /* ИСПРАВЛЕНИЕ: Вместо 1 передаем 'de', 
+     чтобы Payload понял, какой язык подгружать для главной страницы 
+  */
+  const footerData: FooterType = await getCachedGlobal('footer', 'de' as any)()
 
   const navItems = footerData?.navItems || []
 
   return (
     <footer className="mt-auto border-t border-border bg-black dark:bg-card text-white">
-      <div className="container py-8 gap-8 flex flex-col md:flex-row md:justify-between">
+      <div className="container py-8 flex flex-col gap-8 md:flex-row md:justify-between items-center md:items-start">
         <Link className="flex items-center" href="/">
           <Logo />
         </Link>
@@ -24,11 +27,17 @@ export async function Footer() {
           <ThemeSelector />
           <nav className="flex flex-col md:flex-row gap-4">
             {navItems.map(({ link }, i) => {
-              return <CMSLink className="text-white" key={i} {...link} />
+              return (
+                <CMSLink 
+                  className="text-white hover:opacity-80 transition-opacity" 
+                  key={i} 
+                  {...link} 
+                />
+              )
             })}
           </nav>
         </div>
       </div>
     </footer>
-  )
+  ) 
 }
