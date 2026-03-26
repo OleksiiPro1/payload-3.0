@@ -6,63 +6,50 @@ import { Logo } from '@/components/Logo/Logo'
 import { CMSLink } from '@/components/Link'
 
 export async function Footer() {
-  // Тянем данные из глобала 'footer' для немецкого языка
   const footerData: FooterType = await getCachedGlobal('footer', 'de' as any)()
-  
-  // Достаем наши будущие поля (если их нет в базе, будут пустые массивы/строки)
-  const navItems = footerData?.navItems || []
-  const contactInfo = (footerData as any)?.contactInfo || {}
-  const openingHours = (footerData as any)?.openingHours || []
 
   return (
-    <footer className="mt-auto border-t border-blue-200 bg-white text-slate-600">
-      <div className="container py-12 grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
+    <footer className="mt-auto border-t border-blue-100 bg-white py-12">
+      <div className="container grid grid-cols-1 md:grid-cols-3 gap-10 items-start">
         
-        {/* 1. КОЛОНКА: Логотип и ссылки (Nav Items) */}
-        <div className="flex flex-col gap-6">
-          <Link href="/">
+        {/* ЛЕВО: Логотип и Название */}
+        <div className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-2">
             <Logo />
+            <span className="text-3xl font-light text-[#7BB8D9] tracking-tight">OrthoMed</span>
           </Link>
-          <nav className="flex flex-col gap-2">
-            {navItems.map(({ link }, i) => (
-              <CMSLink key={i} {...link} className="hover:text-blue-500 transition-colors" />
-            ))}
-          </nav>
         </div>
 
-        {/* 2. КОЛОНКА: Контакты из Админки */}
-        <div className="flex flex-col gap-4 text-sm">
-          <h3 className="font-bold text-slate-900">OrthoMed</h3>
-          {/* Эти данные потекут из админки, когда ты создашь поля */}
-          <p className="whitespace-pre-line">{contactInfo.address || 'Musterstraße 1\n1234 Musterstadt'}</p>
-          <p>{contactInfo.phone || '+43 123 456 789'}</p>
-          <p>{contactInfo.email || 'praxis@orthomed.at'}</p>
-        </div>
+        {/* ЦЕНТР: Контакты из админки */}
+        <div className="text-[14px] leading-relaxed text-slate-500">
+  <p className="font-bold text-slate-800 mb-2 text-lg">OrthoMed</p>
+  <p className="whitespace-pre-line mb-4">{(footerData as any)?.address}</p>
+  <p className="flex items-center gap-2">
+    <span className="text-[#7BB8D9]">T:</span> {(footerData as any)?.phone}
+  </p>
+  <p className="flex items-center gap-2">
+    <span className="text-[#7BB8D9]">E:</span> {(footerData as any)?.email}
+  </p>
+</div>
 
-        {/* 3. КОЛОНКА: Часы работы из Админки */}
-        <div className="flex flex-col gap-4 text-sm">
-          <h3 className="font-bold text-slate-900">Ordinationszeiten</h3>
-          <div className="grid grid-cols-1 gap-y-2">
-            {openingHours.length > 0 ? (
-              openingHours.map((item: any, i: number) => (
-                <div key={i} className="flex justify-between border-b border-slate-50 pb-1">
-                  <span className="font-medium">{item.day}</span>
-                  <span>{item.hours}</span>
-                </div>
-              ))
-            ) : (
-              // Заглушка, пока ты не заполнил админку
-              <p className="text-slate-400 italic">Данные не заполнены в админке</p>
-            )}
-          </div>
-        </div>
+{/* ПРАВО: Часы работы */}
+<div className="text-[14px] text-slate-500">
+  <p className="font-bold text-slate-800 mb-2 text-lg">Ordinationszeiten</p>
+  <div className="flex flex-col gap-1">
+    {(footerData as any)?.openingHours?.map((item: any, i: number) => (
+      <div key={i} className="flex justify-between border-b border-slate-50 pb-1 max-w-[240px]">
+        <span className="font-medium text-slate-700">{item.day}</span>
+        <span>{item.hours}</span>
+      </div>
+    ))}
+  </div>
+</div>
 
       </div>
 
-      <div className="border-t border-slate-100 py-6">
-        <div className="container text-xs text-slate-400 flex justify-between items-center">
-          <span>© {new Date().getFullYear()} OrthoMed. Alle Rechte vorbehalten.</span>
-        </div>
+      {/* Нижняя панелька */}
+      <div className="container mt-12 pt-6 border-t border-slate-100 text-[11px] text-slate-400">
+        © {new Date().getFullYear()} OrthoMed. Alle Rechte vorbehalten.
       </div>
     </footer>
   )
