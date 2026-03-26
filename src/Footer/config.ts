@@ -7,28 +7,14 @@ export const Footer: GlobalConfig = {
   access: {
     read: () => true,
   },
+  admin: {
+    group: 'Globals', // Добавили группу, чтобы легче было найти в меню
+  },
   fields: [
-    {
-      name: 'navItems',
-      type: 'array',
-      fields: [
-        link({
-          appearances: false,
-        }),
-      ],
-      maxRows: 6,
-      admin: {
-        initCollapsed: true,
-        components: {
-          RowLabel: '@/Footer/RowLabel#RowLabel',
-        },
-      },
-    },
-    // ДОБАВЛЯЕМ ПОЛЯ ДЛЯ АДРЕСА И КОНТАКТОВ
     {
       name: 'address',
       type: 'textarea',
-      label: 'Адрес',
+      label: 'Адрес (Musterstraße 1...)',
     },
     {
       name: 'phone',
@@ -40,23 +26,42 @@ export const Footer: GlobalConfig = {
       type: 'text',
       label: 'Email',
     },
-    // ДОБАВЛЯЕМ ЧАСЫ РАБОТЫ
     {
       name: 'openingHours',
       type: 'array',
       label: 'Часы работы',
+      labels: {
+        singular: 'Рабочий день',
+        plural: 'Рабочие дни',
+      },
       fields: [
         {
           name: 'day',
           type: 'text',
-          label: 'День (например, Mo)',
+          label: 'День недели (Mo, Di...)',
+          required: true,
         },
         {
           name: 'hours',
           type: 'text',
-          label: 'Время (например, 08:00 - 15:30)',
+          label: 'Время (08:00 - 15:30)',
+          required: true,
         },
       ],
+    },
+    {
+      name: 'navItems',
+      type: 'array',
+      label: 'Ссылки навигации',
+      fields: [
+        link({
+          appearances: false,
+        }),
+      ],
+      maxRows: 6,
+      admin: {
+        initCollapsed: true,
+      },
     },
   ],
   hooks: {
