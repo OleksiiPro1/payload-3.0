@@ -18,6 +18,25 @@ import { Footer } from './Footer/config'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
+const plugins = [
+  formBuilderPlugin({
+    fields: {
+      payment: false,
+    },
+  }),
+]
+
+if (process.env.BLOB_READ_WRITE_TOKEN) {
+  plugins.push(
+    vercelBlobStorage({
+      collections: {
+        media: true,
+      },
+      token: process.env.BLOB_READ_WRITE_TOKEN,
+    })  as any
+  )
+}
+
 export default buildConfig({
   admin: {
     user: Users.slug,
@@ -38,19 +57,5 @@ export default buildConfig({
     },
   }),
   sharp,
-  plugins: [
-    formBuilderPlugin({
-      fields: {
-        payment: false,
-      },
-    }),
-
-    vercelBlobStorage({
-  collections: {
-    media: true,
-  },
-  token: process.env.BLOB_READ_WRITE_TOKEN,
-  clientUploads: true,
-})
-  ],
+  plugins,
 })
