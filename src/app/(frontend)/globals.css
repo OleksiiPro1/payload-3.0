@@ -1,3 +1,5 @@
+
+
 @import 'tailwindcss';
 
 
@@ -10,6 +12,16 @@
 @custom-variant xl (@media (width >= theme(--breakpoint-xl)));
 @custom-variant 2xl (@media (width >= theme(--breakpoint-2xl)));
 
+
+:root {
+  --background: #ffffff;
+  --foreground: #000000;
+}
+
+body {
+  background: white !important;
+  color: black !important;
+}
 @layer base {
   h1,
   h2,
@@ -214,9 +226,6 @@
   }
 }
 
-html {
-  opacity: 0;
-}
 
 html[data-theme='dark'],
 html[data-theme='light'] {
