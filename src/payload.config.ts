@@ -5,7 +5,7 @@ import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
 import { formBuilderPlugin } from '@payloadcms/plugin-form-builder'
-import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
+// import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
@@ -27,14 +27,23 @@ const plugins = [
 ]
 
 if (process.env.BLOB_READ_WRITE_TOKEN) {
-  plugins.push(
-    vercelBlobStorage({
-      collections: {
-        media: true,
-      },
-      token: process.env.BLOB_READ_WRITE_TOKEN,
-    })  as any
-  )
+  const plugins = [
+  formBuilderPlugin({
+    fields: {
+      payment: false,
+    },
+  }),
+]
+
+// ВРЕМЕННО НИЧЕГО НЕ ДОБАВЛЯЕМ СЮДА
+// plugins.push(
+//   vercelBlobStorage({
+//     collections: {
+//       media: true,
+//     },
+//     token: process.env.BLOB_READ_WRITE_TOKEN,
+//   }) as any,
+// )
 }
 
 export default buildConfig({
