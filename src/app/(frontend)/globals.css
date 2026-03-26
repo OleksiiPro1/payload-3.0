@@ -1,50 +1,11 @@
-/* 1. Базовые директивы Tailwind 3 */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* 2. Подключаем конфиг с твоими шрифтами Montserrat */
 @config "../../../tailwind.config.mjs";
 
-/* 3. Твои основные цвета и переменные */
-:root {
-  --background: 100% 0 0deg; /* Белый */
-  --foreground: 14.5% 0 0deg; /* Черный */
-  --primary: 20.5% 0 0deg;
-  --radius: 0.625rem;
-  --border: 92.2% 0 0deg;
-}
-
-/* 4. Глобальные стили */
-@layer base {
-  * {
-    border-color: hsl(var(--border) / 0.1);
-  }
-  
-  body {
-    background-color: white !important;
-    color: black !important;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    /* Убедись, что шрифт Montserrat применяется */
-    font-family: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
-  }
-
-  /* Сброс стилей заголовков, чтобы они брались из tailwind.config */
-  h1, h2, h3, h4, h5, h6 {
-    font-weight: unset;
-    font-size: unset;
-  }
-}
-
-/* 5. Утилиты для контейнера (если нужны) */
-@layer utilities {
-  .container {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
+/* Твои ручные фиксы */
+body {
+  background-color: white !important;
+  color: black !important;
 }

@@ -1,64 +1,28 @@
 /** @type {import('tailwindcss').Config} */
-const config = {
+export default {
+  content: [
+    './src/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/blocks/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/heros/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/Header/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/Footer/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
   theme: {
     extend: {
-      // 1. Добавляем Montserrat в шрифты
+      colors: {
+        // Добавляем принудительно голубой, если он потерялся в переменных
+        primary: '#0070f3', 
+        blue: {
+          500: '#3b82f6',
+          600: '#2563eb',
+        }
+      },
       fontFamily: {
         sans: ['var(--font-montserrat)', 'sans-serif'],
       },
-      typography: () => ({
-        DEFAULT: {
-          css: [
-            {
-              '--tw-prose-body': 'var(--text)',
-              '--tw-prose-headings': 'var(--text)',
-              h1: {
-                // Изменяем на Montserrat Medium (500)
-                fontWeight: '500', 
-                marginBottom: '0.25em',
-                fontFamily: 'var(--font-montserrat)',
-              },
-              h2: {
-                // Изменяем на Montserrat Medium (500)
-                fontWeight: '500',
-                fontFamily: 'var(--font-montserrat)',
-              },
-              p: {
-                // Изменяем на Montserrat Light (300)
-                fontWeight: '300',
-              }
-            },
-          ],
-        },
-        base: {
-          css: [
-            {
-              h1: {
-                fontSize: '2.5rem',
-              },
-              h2: {
-                fontSize: '1.25rem',
-                // Здесь было 600, меняем на 500 (Medium) для соответствия стилю
-                fontWeight: 500, 
-              },
-            },
-          ],
-        },
-        md: {
-          css: [
-            {
-              h1: {
-                fontSize: '3.5rem',
-              },
-              h2: {
-                fontSize: '1.5rem',
-              },
-            },
-          ],
-        },
-      }),
     },
   },
+  plugins: [],
 }
-
-export default config
