@@ -4,7 +4,8 @@ import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
-import { formBuilderPlugin } from '@payloadcms/plugin-form-builder' // 1. Импорт плагина
+import { formBuilderPlugin } from '@payloadcms/plugin-form-builder'
+import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
@@ -37,12 +38,19 @@ export default buildConfig({
     },
   }),
   sharp,
-  // 2. Добавляем секцию плагинов
   plugins: [
     formBuilderPlugin({
       fields: {
-        payment: false, // если не нужна оплата в формах
+        payment: false,
       },
     }),
+
+    vercelBlobStorage({
+  collections: {
+    media: true,
+  },
+  token: process.env.BLOB_READ_WRITE_TOKEN,
+  clientUploads: true,
+})
   ],
 })
