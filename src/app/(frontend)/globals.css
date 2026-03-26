@@ -1,9 +1,5 @@
-
-
-@import 'tailwindcss';
-
-
-@config '../../../tailwind.config.mjs';
+@import "tailwindcss";
+@config "../../../tailwind.config.mjs";
 
 @custom-variant dark (&:is([data-theme='dark'] *));
 @custom-variant sm (@media (width >= theme(--breakpoint-sm)));
