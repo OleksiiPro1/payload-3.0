@@ -30,9 +30,7 @@ if (process.env.BLOB_READ_WRITE_TOKEN) {
   plugins.push(
     vercelBlobStorage({
       collections: {
-        media: {
-          prefix: 'media',
-        },
+        media: true,
       },
       token: process.env.BLOB_READ_WRITE_TOKEN,
       clientUploads: true,
