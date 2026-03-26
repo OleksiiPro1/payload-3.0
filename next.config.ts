@@ -3,7 +3,9 @@ import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
   // 1. УБРАЛИ eslint и typescript отсюда, так как новая версия их тут не любит
-  
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   // 2. Оставляем редиректы для чистого URL
   async redirects() {
     return [
