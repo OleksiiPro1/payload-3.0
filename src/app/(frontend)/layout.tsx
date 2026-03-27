@@ -9,7 +9,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html lang="de">
       <body className="min-h-screen flex flex-col bg-white">
         {await Header()} 
-        <main className="flex-grow">
+        <main className="flex-grow pt-[104px] md:pt-[112px]">
           {children}
         </main>
         {await Footer()} 
