@@ -8,7 +8,7 @@ export const HeaderClient: React.FC<{ data: any }> = ({ data }) => {
   const { navItems, phone } = data || {}
 
   return (
-    <header className="fixed inset-x-0 top-0 z-[100] w-full bg-white/95 px-5 py-4 font-sans backdrop-blur-md">
+    <header className="w-full bg-white px-5 pt-6 font-sans">
       <div className="mx-auto max-w-7xl">
         <div className="flex h-[72px] items-center justify-between rounded-full bg-[#F8FCFE] border border-white/40 px-6 md:px-8 shadow-sm backdrop-blur-md">
           <Link href="/" className="flex items-center shrink-0">
@@ -61,7 +61,7 @@ export const HeaderClient: React.FC<{ data: any }> = ({ data }) => {
         </div>
 
         <div className={cn(
-          "absolute left-5 right-5 top-[96px] overflow-hidden rounded-[32px] bg-white border border-gray-100 p-8 shadow-2xl transition-all duration-300 lg:hidden",
+          "absolute left-5 right-5 top-[100px] overflow-hidden rounded-[32px] bg-white border border-gray-100 p-8 shadow-2xl transition-all duration-300 lg:hidden",
           isOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"
         )}>
            <div className="flex flex-col gap-6">
@@ -84,6 +84,7 @@ export const HeaderClient: React.FC<{ data: any }> = ({ data }) => {
           </div>
         </div>
       </div>
+      <div className="mb-5" />
     </header>
   )
 }
