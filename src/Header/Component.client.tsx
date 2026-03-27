@@ -31,7 +31,7 @@ export const HeaderClient: React.FC<{ data: any }> = ({ data }) => {
                 <Link 
                   key={i} 
                   href={href} 
-                  className="text-[14px] xl:text-[15px] font-medium text-[#565555] transition hover:text-[#7BA7C3]"
+                  className="text-[14px] xl:text-[15px] font-medium text-[#565555] no-underline transition hover:text-[#7BA7C3]"
                 >
                   {label}
                 </Link>
@@ -44,7 +44,7 @@ export const HeaderClient: React.FC<{ data: any }> = ({ data }) => {
             
             {/* ТЕЛЕФОН - Убрал hidden xl:block, теперь он виден от планшета (md:flex) */}
             {phone && (
-              <a href={`tel:${phone}`} className="hidden md:flex items-center gap-2 text-[14px] xl:text-[15px] font-medium text-[#7BA7C3] underline underline-offset-4 decoration-1 hover:opacity-70 transition">
+              <a href={`tel:${phone}`} className="hidden md:flex items-center gap-2 text-[14px] xl:text-[15px] font-medium text-[#7BA7C3] no-underline hover:opacity-70 transition">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
                 {phone}
               </a>
@@ -53,7 +53,7 @@ export const HeaderClient: React.FC<{ data: any }> = ({ data }) => {
             {/* Кнопка записи */}
             <Link 
               href="/kontakt" 
-              className="rounded-full border border-[#7BA7C3] px-4 py-2 md:px-6 md:py-2.5 text-[13px] md:text-[15px] font-medium text-[#7BA7C3] transition hover:bg-[#7BA7C3] hover:text-white shrink-0"
+              className="rounded-full border border-[#7BA7C3] px-4 py-2 md:px-6 md:py-2.5 text-[13px] md:text-[15px] font-medium text-[#7BA7C3] no-underline transition hover:bg-[#7BA7C3] hover:text-white shrink-0"
             >
               Termin <span className="hidden sm:inline">vereinbaren</span>
             </Link>
@@ -84,7 +84,7 @@ export const HeaderClient: React.FC<{ data: any }> = ({ data }) => {
                 key={i} 
                 href={item.link?.url || '#'} 
                 onClick={() => setIsOpen(false)}
-                className="text-[18px] font-medium text-[#565555]"
+                className="text-[18px] font-medium text-[#565555] no-underline"
               >
                 {item.link?.label}
               </Link>
@@ -92,7 +92,7 @@ export const HeaderClient: React.FC<{ data: any }> = ({ data }) => {
             {phone && (
               <>
                 <hr className="border-gray-100" />
-                <a href={`tel:${phone}`} className="text-[20px] font-semibold text-[#7BA7C3]">{phone}</a>
+                <a href={`tel:${phone}`} className="text-[20px] font-semibold text-[#7BA7C3] no-underline">{phone}</a>
               </>
             )}
           </div>

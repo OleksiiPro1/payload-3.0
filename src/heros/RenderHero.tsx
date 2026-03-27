@@ -47,7 +47,7 @@ export const RenderHero = (props: any) => {
                   href={buttonUrl}
                   target={buttonNewTab ? '_blank' : undefined}
                   rel={buttonNewTab ? 'noopener noreferrer' : undefined}
-                  className="inline-flex h-[50px] items-center justify-center rounded-full bg-[#7BA7C3] px-[30px] text-[16px] font-medium text-white transition hover:bg-[#6d99b5]"
+                  className="inline-flex h-[50px] items-center justify-center rounded-full bg-[#7BA7C3] px-[30px] text-[16px] font-medium text-white no-underline transition hover:bg-[#6d99b5]"
                 >
                   {buttonLabel}
                 </Link>

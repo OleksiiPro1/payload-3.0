@@ -75,7 +75,7 @@ p {
 
 a {
   color: currentColor;
-  text-decoration: underline;
+  text-decoration: none;
 
   &:focus {
     opacity: 0.8;
