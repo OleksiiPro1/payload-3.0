@@ -1,9 +1,12 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { cn } from '@/utilities/ui'
 
 export const KategorieRasterBlock: React.FC<any> = ({ ueberschrift, kategorien }) => {
-  const displayedKategorien = kategorien?.slice(0, 9);
+  const displayedKategorien = kategorien?.slice(0, 9)
+  const shouldCenterLastCard =
+    Array.isArray(displayedKategorien) && displayedKategorien.length > 0 && displayedKategorien.length % 3 === 1
 
   return (
     <section className="bg-white pb-20 pt-16 px-5"> 
@@ -16,17 +19,21 @@ export const KategorieRasterBlock: React.FC<any> = ({ ueberschrift, kategorien }
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-[290px]">
           {displayedKategorien?.map((kategorie: any, index: number) => {
-            const hasImage = kategorie.bild?.url;
-            const hasIcon = kategorie.icon?.url;
+            const hasImage = kategorie.bild?.url
+            const hasIcon = kategorie.icon?.url
             
             // Если в админке пусто, используем стандартный светлый цвет
-            const customBgColor = kategorie.backgroundColor || '#F8FCFE';
+            const customBgColor = kategorie.backgroundColor || '#F8FCFE'
+            const isLastCenteredCard = shouldCenterLastCard && index === displayedKategorien.length - 1
             
             return (
               <Link 
                 href={kategorie.link || '#'} 
                 key={index}
-                className="group relative flex flex-col overflow-hidden rounded-[32px] p-8 transition-all hover:shadow-xl"
+                className={cn(
+                  'group relative flex flex-col overflow-hidden rounded-[32px] p-8 transition-all hover:shadow-xl',
+                  isLastCenteredCard && 'lg:col-start-2',
+                )}
                 style={{ 
                   backgroundColor: !hasImage ? customBgColor : 'transparent' 
                 }}
