@@ -9,16 +9,16 @@ import { getClientSideURL } from '@/utilities/getURL'
 export const getMediaUrl = (url: string | null | undefined, cacheTag?: string | null): string => {
   if (!url) return ''
 
-  if (cacheTag && cacheTag !== '') {
-    cacheTag = encodeURIComponent(cacheTag)
-  }
+  const normalizedCacheTag = cacheTag && cacheTag !== '' ? encodeURIComponent(cacheTag) : null
+  const separator = url.includes('?') ? '&' : '?'
+  const withCacheTag = normalizedCacheTag ? `${url}${separator}updatedAt=${normalizedCacheTag}` : url
 
   // Check if URL already has http/https protocol
   if (url.startsWith('http://') || url.startsWith('https://')) {
-    return cacheTag ? `${url}?${cacheTag}` : url
+    return withCacheTag
   }
 
   // Otherwise prepend client-side URL
   const baseUrl = getClientSideURL()
-  return cacheTag ? `${baseUrl}${url}?${cacheTag}` : `${baseUrl}${url}`
+  return `${baseUrl}${withCacheTag}`
 }
