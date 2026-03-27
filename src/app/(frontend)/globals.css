@@ -9,3 +9,9 @@ body {
   background-color: white !important;
   color: black !important;
 } 
+
+@layer base {
+  a {
+    @apply no-underline;
+  }
+}
