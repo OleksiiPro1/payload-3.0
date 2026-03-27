@@ -1,5 +1,5 @@
-import Image from 'next/image'
 import Link from 'next/link'
+import { Media } from '@/components/Media'
 
 export const RenderHero = (props: any) => {
   const { type, heading, eyebrow, description, links, media } = props ?? {}
@@ -12,11 +12,6 @@ export const RenderHero = (props: any) => {
   const buttonUrl = firstLink?.link?.url || '#'
   const buttonLabel = firstLink?.link?.label || 'Jetzt Beratungstermin vereinbaren'
   const buttonNewTab = Boolean(firstLink?.link?.newTab)
-
-  const mediaUrl =
-    media && typeof media === 'object' && 'url' in media
-      ? media.url || '/main-hero.webp'
-      : '/main-hero.webp'
 
   const mediaAlt =
     media && typeof media === 'object' && 'alt' in media
@@ -62,14 +57,21 @@ export const RenderHero = (props: any) => {
 
           {showMedia && (
             <div className="flex justify-center md:justify-end">
-              <Image
-                src={mediaUrl}
-                alt={mediaAlt}
-                width={600}
-                height={450}
-                className="h-auto w-full max-w-[560px] rounded-[20px] object-cover"
-                priority
-              />
+              {media && typeof media === 'object' ? (
+                <Media
+                  resource={media}
+                  imgClassName="h-auto w-full max-w-[560px] rounded-[20px] object-cover"
+                  priority
+                />
+              ) : (
+                <img
+                  src="/main-hero.webp"
+                  alt={mediaAlt}
+                  width={600}
+                  height={450}
+                  className="h-auto w-full max-w-[560px] rounded-[20px] object-cover"
+                />
+              )}
             </div>
           )}
         </div>
