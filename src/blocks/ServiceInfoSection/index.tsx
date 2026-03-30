@@ -122,14 +122,12 @@ export const ServiceInfoSectionBlock: React.FC<any> = ({
           <div className="rounded-[28px] bg-[#F8FCFE] p-8 text-center">
             <div className="relative mx-auto mb-5 h-[96px] w-[96px] overflow-hidden rounded-full">
               {doctorImageURL ? (
-                <Image
-                  fill
+                <img
                   src={doctorImageURL}
                   alt={doctorImageAlt}
-                  className="object-cover"
-                  sizes="96px"
-                  priority
-                  unoptimized
+                  width={96}
+                  height={96}
+                  className="h-full w-full object-cover"
                 />
               ) : null}
             </div>
