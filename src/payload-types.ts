@@ -260,6 +260,28 @@ export interface Page {
         eyebrow?: string | null;
         heading: string;
         /**
+         * Verwenden Sie eine Leerzeile, um Absätze zu trennen.
+         */
+        body?: string | null;
+        listHeading?: string | null;
+        listItems?:
+          | {
+              text: string;
+              id?: string | null;
+            }[]
+          | null;
+        button?: {
+          label?: string | null;
+          url?: string | null;
+        };
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'serviceTextSection';
+      }
+    | {
+        eyebrow?: string | null;
+        heading: string;
+        /**
          * Verwenden Sie Enter, um Absätze zu trennen.
          */
         description?: string | null;
@@ -1073,6 +1095,28 @@ export interface PagesSelect<T extends boolean = true> {
               address?: T;
               phone?: T;
               email?: T;
+              id?: T;
+              blockName?: T;
+            };
+        serviceTextSection?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              body?: T;
+              listHeading?: T;
+              listItems?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              button?:
+                | T
+                | {
+                    label?: T;
+                    url?: T;
+                  };
               id?: T;
               blockName?: T;
             };

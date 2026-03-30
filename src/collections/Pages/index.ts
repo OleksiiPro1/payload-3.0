@@ -5,6 +5,7 @@ import { AboutSection } from '../../blocks/AboutSection/AboutSection'
 import { KategorieRaster } from '../../blocks/KategorieRaster/config'
 import { InfoSektion } from '../../blocks/InfoSektion/config'
 import { ServiceInfoSection } from '../../blocks/ServiceInfoSection/config'
+import { ServiceTextSection } from '../../blocks/ServiceTextSection/config'
 import { authenticated } from '../../access/authenticated'
 import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
 import { Archive } from '../../blocks/ArchiveBlock/config'
@@ -86,6 +87,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 KategorieRaster,
                 InfoSektion,
                 ServiceInfoSection,
+                ServiceTextSection,
                 AboutSection,
                 TherapieOptionen,
                 ContactSection,
