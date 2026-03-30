@@ -281,6 +281,23 @@ export interface Page {
     | {
         eyebrow?: string | null;
         heading: string;
+        items?:
+          | {
+              question: string;
+              /**
+               * Verwenden Sie eine Leerzeile, um Absätze zu trennen.
+               */
+              answer: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'serviceFAQ';
+      }
+    | {
+        eyebrow?: string | null;
+        heading: string;
         /**
          * Verwenden Sie Enter, um Absätze zu trennen.
          */
@@ -1116,6 +1133,21 @@ export interface PagesSelect<T extends boolean = true> {
                 | {
                     label?: T;
                     url?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        serviceFAQ?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              items?:
+                | T
+                | {
+                    question?: T;
+                    answer?: T;
+                    id?: T;
                   };
               id?: T;
               blockName?: T;

@@ -17,6 +17,7 @@ import { AboutSectionBlock } from '@/blocks/AboutSection/AboutSectionBlock'
 import { TherapieOptionenBlock } from '@/blocks/TherapieOptionen/TherapieOptionenBlock'
 import { ServiceInfoSectionBlock } from '@/blocks/ServiceInfoSection'
 import { ServiceTextSectionBlock } from '@/blocks/ServiceTextSection'
+import { ServiceFAQBlock } from '@/blocks/ServiceFAQ'
 
 const blockComponents: Record<string, React.FC<any>> = {
   archive: ArchiveBlock,
@@ -36,6 +37,7 @@ const blockComponents: Record<string, React.FC<any>> = {
   therapieOptionen: TherapieOptionenBlock, 
   serviceInfoSection: ServiceInfoSectionBlock,
   serviceTextSection: ServiceTextSectionBlock,
+  serviceFAQ: ServiceFAQBlock,
 }
 
 export const RenderBlocks: React.FC<{
