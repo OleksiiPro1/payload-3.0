@@ -58,15 +58,7 @@ export const ServicePageHero = (props: any) => {
                 imgClassName="h-auto w-full max-w-[560px] rounded-[24px] object-cover"
                 priority
               />
-            ) : (
-              <img
-                src="/main-hero.webp"
-                alt={mediaAlt}
-                width={600}
-                height={450}
-                className="h-auto w-full max-w-[560px] rounded-[24px] object-cover"
-              />
-            )}
+            ) : null}
           </div>
         </div>
       </div>
