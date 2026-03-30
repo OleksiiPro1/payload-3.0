@@ -79,6 +79,7 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
   const shouldBypassOptimization =
     typeof src === 'string' &&
     (src.includes('/api/media/file/') || src.includes('.blob.vercel-storage.com'))
+  const placeholder = shouldBypassOptimization ? 'empty' : 'blur'
 
   // NOTE: this is used by the browser to determine which image to download at different screen sizes
   const sizes = sizeFromProps
@@ -94,8 +95,8 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
         className={cn(imgClassName)}
         fill={fill}
         height={!fill ? height : undefined}
-        placeholder="blur"
-        blurDataURL={placeholderBlur}
+        placeholder={placeholder}
+        blurDataURL={placeholder === 'blur' ? placeholderBlur : undefined}
         priority={priority}
         quality={100}
         loading={loading}

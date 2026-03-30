@@ -3,12 +3,18 @@ import { getClientSideURL } from '@/utilities/getURL'
 const encodeMediaURL = (url: string): string => {
   if (url.startsWith('http://') || url.startsWith('https://')) {
     const parsedURL = new URL(url)
-    parsedURL.pathname = encodeURI(parsedURL.pathname)
+    parsedURL.pathname = parsedURL.pathname
+      .split('/')
+      .map((segment) => encodeURIComponent(decodeURIComponent(segment)))
+      .join('/')
     return parsedURL.toString()
   }
 
   const [path, query = ''] = url.split('?')
-  const encodedPath = encodeURI(path)
+  const encodedPath = path
+    .split('/')
+    .map((segment) => encodeURIComponent(decodeURIComponent(segment)))
+    .join('/')
 
   return query ? `${encodedPath}?${query}` : encodedPath
 }
