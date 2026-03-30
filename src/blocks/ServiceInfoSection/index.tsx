@@ -125,9 +125,9 @@ export const ServiceInfoSectionBlock: React.FC<any> = ({
                 <img
                   src={doctorImageURL}
                   alt={doctorImageAlt}
-                  width={96}
-                  height={96}
                   className="h-full w-full object-cover"
+                  loading="eager"
+                  decoding="async"
                 />
               ) : null}
             </div>
