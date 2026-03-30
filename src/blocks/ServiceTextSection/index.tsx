@@ -21,7 +21,8 @@ export const ServiceTextSectionBlock: React.FC<any> = ({
 
   return (
     <section className="bg-white px-5 py-16 md:py-20">
-      <div className="mx-auto max-w-5xl">
+      <div className="mx-auto max-w-7xl">
+        <div className="max-w-[860px]">
         {eyebrow && (
           <p className="mb-3 text-[12px] font-medium uppercase tracking-[0.14em] text-[#7BA7C3]">
             {eyebrow}
@@ -52,9 +53,15 @@ export const ServiceTextSectionBlock: React.FC<any> = ({
         )}
 
         {normalizedListItems.length > 0 && (
-          <ul className="mt-4 space-y-3 pl-5 text-[17px] font-light leading-[1.8] text-[#565555]/75 marker:text-[#7BA7C3]">
+          <ul className="mt-4 space-y-3 text-[17px] font-light leading-[1.8] text-[#565555]/75">
             {normalizedListItems.map((item: string, index: number) => (
-              <li key={`${item.slice(0, 24)}-${index}`}>{item}</li>
+              <li key={`${item.slice(0, 24)}-${index}`} className="relative pl-5">
+                <span
+                  aria-hidden="true"
+                  className="absolute left-0 top-[0.72em] h-[6px] w-[6px] -translate-y-1/2 rounded-full bg-[#7BA7C3]"
+                />
+                {item}
+              </li>
             ))}
           </ul>
         )}
@@ -69,6 +76,7 @@ export const ServiceTextSectionBlock: React.FC<any> = ({
             </Link>
           </div>
         )}
+        </div>
       </div>
     </section>
   )
