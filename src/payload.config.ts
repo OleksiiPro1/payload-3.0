@@ -14,6 +14,7 @@ import { Posts } from './collections/Posts'
 import { Categories } from './collections/Categories'
 import { Header } from './Header/config'
 import { Footer } from './Footer/config'
+import { migrations } from './migrations'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -55,6 +56,8 @@ export default buildConfig({
     pool: {
       connectionString: process.env.DATABASE_URL || '',
     },
+    migrationDir: path.resolve(dirname, 'migrations'),
+    migrations,
   }),
   sharp,
   plugins,
