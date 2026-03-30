@@ -122,12 +122,11 @@ export const ServiceInfoSectionBlock: React.FC<any> = ({
           <div className="rounded-[28px] bg-[#F8FCFE] p-8 text-center">
             <div className="relative mx-auto mb-5 h-[96px] w-[96px] overflow-hidden rounded-full">
               {doctorImageURL ? (
-                <img
-                  src={doctorImageURL}
-                  alt={doctorImageAlt}
-                  width={96}
-                  height={96}
-                  className="h-full w-full object-cover"
+                <div
+                  aria-label={doctorImageAlt}
+                  role="img"
+                  className="h-full w-full rounded-full bg-cover bg-center bg-no-repeat"
+                  style={{ backgroundImage: `url("${doctorImageURL}")` }}
                 />
               ) : null}
             </div>
