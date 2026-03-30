@@ -15,6 +15,7 @@ import { KategorieRasterBlock } from '@/blocks/KategorieRaster'
 import { InfoSektionBlock } from '@/blocks/InfoSektion'
 import { AboutSectionBlock } from '@/blocks/AboutSection/AboutSectionBlock' 
 import { TherapieOptionenBlock } from '@/blocks/TherapieOptionen/TherapieOptionenBlock'
+import { ServiceInfoSectionBlock } from '@/blocks/ServiceInfoSection'
 
 const blockComponents: Record<string, React.FC<any>> = {
   archive: ArchiveBlock,
@@ -32,6 +33,7 @@ const blockComponents: Record<string, React.FC<any>> = {
   footer: FooterBlock,
   // Slug должен совпадать с тем, что указан в коллекции TherapieOptionen
   therapieOptionen: TherapieOptionenBlock, 
+  serviceInfoSection: ServiceInfoSectionBlock,
 }
 
 export const RenderBlocks: React.FC<{

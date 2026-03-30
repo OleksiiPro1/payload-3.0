@@ -218,6 +218,46 @@ export interface Page {
       }
     | {
         eyebrow?: string | null;
+        introHeading: string;
+        introDescription?: string | null;
+        reasonHeading: string;
+        /**
+         * Use line breaks to split the content into paragraphs.
+         */
+        reasonBody?: string | null;
+        mainImage: number | Media;
+        doctorCard: {
+          image: number | Media;
+          name: string;
+          specialty?: string | null;
+          subtitle?: string | null;
+          description?: string | null;
+          linkLabel?: string | null;
+          linkUrl?: string | null;
+        };
+        primaryButtonLabel?: string | null;
+        primaryButtonLink?: string | null;
+        openingHoursHeading?: string | null;
+        openingHours?:
+          | {
+              day: string;
+              hours: string;
+              id?: string | null;
+            }[]
+          | null;
+        contactHeading?: string | null;
+        /**
+         * Use line breaks for multiple address lines.
+         */
+        address?: string | null;
+        phone?: string | null;
+        email?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'serviceInfoSection';
+      }
+    | {
+        eyebrow?: string | null;
         heading: string;
         /**
          * Verwenden Sie Enter, um Absätze zu trennen.
@@ -996,6 +1036,43 @@ export interface PagesSelect<T extends boolean = true> {
                     label?: T;
                     url?: T;
                   };
+              id?: T;
+              blockName?: T;
+            };
+        serviceInfoSection?:
+          | T
+          | {
+              eyebrow?: T;
+              introHeading?: T;
+              introDescription?: T;
+              reasonHeading?: T;
+              reasonBody?: T;
+              mainImage?: T;
+              doctorCard?:
+                | T
+                | {
+                    image?: T;
+                    name?: T;
+                    specialty?: T;
+                    subtitle?: T;
+                    description?: T;
+                    linkLabel?: T;
+                    linkUrl?: T;
+                  };
+              primaryButtonLabel?: T;
+              primaryButtonLink?: T;
+              openingHoursHeading?: T;
+              openingHours?:
+                | T
+                | {
+                    day?: T;
+                    hours?: T;
+                    id?: T;
+                  };
+              contactHeading?: T;
+              address?: T;
+              phone?: T;
+              email?: T;
               id?: T;
               blockName?: T;
             };
