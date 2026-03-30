@@ -1,11 +1,18 @@
 import { getPayload } from 'payload'
 import configPromise from '@payload-config'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
-import { RenderHero } from '@/heros/RenderHero' // 1. ДОБАВЛЯЕМ ИМПОРТ
+import { RenderHero } from '@/heros/RenderHero'
 import { notFound } from 'next/navigation'
 
-export default async function Page({ params: paramsPromise }: { params: Promise<{ slug?: string }> }) {
-  const { slug = 'home' } = await paramsPromise
+const defaultLocale = 'de'
+
+export default async function Page({
+  params: paramsPromise,
+}: {
+  params: Promise<{ locale?: string }>
+}) {
+  const { locale } = await paramsPromise
+  const slug = !locale || locale === defaultLocale ? 'home' : locale
   const payload = await getPayload({ config: configPromise })
 
   const result = await payload.find({
@@ -22,10 +29,7 @@ export default async function Page({ params: paramsPromise }: { params: Promise<
 
   return (
     <article>
-      {/* 2. ДОБАВЛЯЕМ ВЫЗОВ HERO ПЕРЕД БЛОКАМИ */}
       <RenderHero {...(page.hero as any)} />
-      
-      {/* Контент под героем */}
       <RenderBlocks blocks={page.layout} />
     </article>
   )
