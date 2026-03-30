@@ -1,6 +1,7 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import { Media } from '@/components/Media'
+import { getMediaUrl } from '@/utilities/getMediaUrl'
 
 const splitParagraphs = (value?: string | null) =>
   value
@@ -27,6 +28,22 @@ export const ServiceInfoSectionBlock: React.FC<any> = ({
 }) => {
   const introParagraphs = splitParagraphs(introDescription)
   const reasonParagraphs = splitParagraphs(reasonBody)
+  const mainImageURL =
+    mainImage && typeof mainImage === 'object'
+      ? getMediaUrl(mainImage.url, mainImage.updatedAt)
+      : ''
+  const mainImageAlt =
+    mainImage && typeof mainImage === 'object' && 'alt' in mainImage
+      ? mainImage.alt || 'Service image'
+      : 'Service image'
+  const doctorImageURL =
+    doctorCard?.image && typeof doctorCard.image === 'object'
+      ? getMediaUrl(doctorCard.image.url, doctorCard.image.updatedAt)
+      : ''
+  const doctorImageAlt =
+    doctorCard?.image && typeof doctorCard.image === 'object' && 'alt' in doctorCard.image
+      ? doctorCard.image.alt || 'Doctor image'
+      : 'Doctor image'
   const addressLines =
     address
       ?.split('\n')
@@ -67,12 +84,15 @@ export const ServiceInfoSectionBlock: React.FC<any> = ({
 
           <div className="mt-10 overflow-hidden rounded-[28px] bg-[#F8FCFE]">
             <div className="relative h-[320px] w-full md:h-[420px]">
-              {mainImage && typeof mainImage === 'object' ? (
-                <Media
+              {mainImageURL ? (
+                <Image
                   fill
-                  resource={mainImage}
-                  imgClassName="object-cover"
+                  src={mainImageURL}
+                  alt={mainImageAlt}
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 66vw"
                   priority
+                  unoptimized
                 />
               ) : null}
             </div>
@@ -101,12 +121,15 @@ export const ServiceInfoSectionBlock: React.FC<any> = ({
         <aside className="space-y-8">
           <div className="rounded-[28px] bg-[#F8FCFE] p-8 text-center">
             <div className="relative mx-auto mb-5 h-[96px] w-[96px] overflow-hidden rounded-full">
-              {doctorCard?.image && typeof doctorCard.image === 'object' ? (
-                <Media
+              {doctorImageURL ? (
+                <Image
                   fill
-                  resource={doctorCard.image}
-                  imgClassName="object-cover"
+                  src={doctorImageURL}
+                  alt={doctorImageAlt}
+                  className="object-cover"
+                  sizes="96px"
                   priority
+                  unoptimized
                 />
               ) : null}
             </div>
