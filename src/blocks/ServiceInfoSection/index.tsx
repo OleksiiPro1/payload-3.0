@@ -204,7 +204,7 @@ export const ServiceInfoSectionBlock: React.FC<any> = ({
 
             {addressLines.length > 0 && (
               <div className="flex gap-3 text-[14px] font-light leading-[1.7] text-[#565555]/75">
-                <span className="mt-[2px] text-[#7BA7C3]">o</span>
+                <span className="mt-[2px] text-[#7BA7C3]">Strasse:</span>
                 <div>
                   {addressLines.map((line: string, index: number) => (
                     <p key={`${line}-${index}`} className="m-0">
@@ -220,7 +220,7 @@ export const ServiceInfoSectionBlock: React.FC<any> = ({
                 href={phoneHref}
                 className="flex items-center gap-3 text-[14px] font-light text-[#565555]/75 no-underline hover:text-[#7BA7C3]"
               >
-                <span className="text-[#7BA7C3]">o</span>
+                <span className="text-[#7BA7C3]">Phone:</span>
                 <span>{phone}</span>
               </Link>
             )}
@@ -230,7 +230,7 @@ export const ServiceInfoSectionBlock: React.FC<any> = ({
                 href={emailHref}
                 className="flex items-center gap-3 text-[14px] font-light text-[#565555]/75 no-underline hover:text-[#7BA7C3]"
               >
-                <span className="text-[#7BA7C3]">o</span>
+                <span className="text-[#7BA7C3]">Email:</span>
                 <span>{email}</span>
               </Link>
             )}
