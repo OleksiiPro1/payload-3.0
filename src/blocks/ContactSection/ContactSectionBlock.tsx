@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { getMediaUrl } from '@/utilities/getMediaUrl'
 
 export const ContactSectionBlock: React.FC<any> = ({ 
   media, 
@@ -11,7 +12,10 @@ export const ContactSectionBlock: React.FC<any> = ({
   primaryButtonLink, 
   phoneLabel 
 }) => {
-  const imageUrl = media?.url || ''
+  const imageUrl =
+    media && typeof media === 'object' ? getMediaUrl(media.url, media.updatedAt) : ''
+  const imageAlt =
+    media && typeof media === 'object' && 'alt' in media ? media.alt || 'Interior' : 'Interior'
   
   return (
     <section className="bg-white py-16 px-5">
@@ -23,10 +27,11 @@ export const ContactSectionBlock: React.FC<any> = ({
             {imageUrl && (
               <Image 
                 src={imageUrl} 
-                alt="Interior" 
+                alt={imageAlt} 
                 fill 
                 className="rounded-[32px] object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
+                unoptimized
               />
             )}
           </div>
