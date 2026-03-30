@@ -1,5 +1,18 @@
 import { getClientSideURL } from '@/utilities/getURL'
 
+const encodeMediaURL = (url: string): string => {
+  if (url.startsWith('http://') || url.startsWith('https://')) {
+    const parsedURL = new URL(url)
+    parsedURL.pathname = encodeURI(parsedURL.pathname)
+    return parsedURL.toString()
+  }
+
+  const [path, query = ''] = url.split('?')
+  const encodedPath = encodeURI(path)
+
+  return query ? `${encodedPath}?${query}` : encodedPath
+}
+
 /**
  * Processes media resource URL to ensure proper formatting
  * @param url The original URL from the resource
@@ -9,12 +22,15 @@ import { getClientSideURL } from '@/utilities/getURL'
 export const getMediaUrl = (url: string | null | undefined, cacheTag?: string | null): string => {
   if (!url) return ''
 
+  const normalizedURL = encodeMediaURL(url)
   const normalizedCacheTag = cacheTag && cacheTag !== '' ? encodeURIComponent(cacheTag) : null
-  const separator = url.includes('?') ? '&' : '?'
-  const withCacheTag = normalizedCacheTag ? `${url}${separator}updatedAt=${normalizedCacheTag}` : url
+  const separator = normalizedURL.includes('?') ? '&' : '?'
+  const withCacheTag = normalizedCacheTag
+    ? `${normalizedURL}${separator}updatedAt=${normalizedCacheTag}`
+    : normalizedURL
 
   // Check if URL already has http/https protocol
-  if (url.startsWith('http://') || url.startsWith('https://')) {
+  if (normalizedURL.startsWith('http://') || normalizedURL.startsWith('https://')) {
     return withCacheTag
   }
 

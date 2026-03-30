@@ -65,6 +65,19 @@ export const ServiceInfoSectionBlock: React.FC<any> = ({
             </div>
           )}
 
+          <div className="mt-10 overflow-hidden rounded-[28px] bg-[#F8FCFE]">
+            <div className="relative h-[320px] w-full md:h-[420px]">
+              {mainImage && typeof mainImage === 'object' ? (
+                <Media
+                  fill
+                  resource={mainImage}
+                  imgClassName="object-cover"
+                  priority
+                />
+              ) : null}
+            </div>
+          </div>
+
           {reasonHeading && (
             <h3 className="mt-12 text-[32px] font-medium leading-[1.2] text-[#565555] md:text-[42px]">
               {reasonHeading}
@@ -83,25 +96,16 @@ export const ServiceInfoSectionBlock: React.FC<any> = ({
               ))}
             </div>
           )}
-
-          <div className="mt-10 overflow-hidden rounded-[28px] bg-[#F8FCFE]">
-            {mainImage && typeof mainImage === 'object' ? (
-              <Media
-                resource={mainImage}
-                imgClassName="h-[320px] w-full object-cover md:h-[420px]"
-                priority
-              />
-            ) : null}
-          </div>
         </div>
 
         <aside className="space-y-8">
           <div className="rounded-[28px] bg-[#F8FCFE] p-8 text-center">
-            <div className="mx-auto mb-5 h-[96px] w-[96px] overflow-hidden rounded-full">
+            <div className="relative mx-auto mb-5 h-[96px] w-[96px] overflow-hidden rounded-full">
               {doctorCard?.image && typeof doctorCard.image === 'object' ? (
                 <Media
+                  fill
                   resource={doctorCard.image}
-                  imgClassName="h-full w-full object-cover"
+                  imgClassName="object-cover"
                   priority
                 />
               ) : null}
