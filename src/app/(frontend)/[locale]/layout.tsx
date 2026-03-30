@@ -22,7 +22,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <div className={cn(montserrat.variable, 'antialiased font-sans')}>
       <InitTheme />
       <Providers>
-        <AdminBar adminBarProps={{ preview: isEnabled }} />
+        {isEnabled && <AdminBar adminBarProps={{ preview: isEnabled }} />}
         <main>{children}</main>
       </Providers>
     </div>

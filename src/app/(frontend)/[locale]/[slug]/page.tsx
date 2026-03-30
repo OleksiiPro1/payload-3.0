@@ -9,6 +9,7 @@ import { homeStatic } from '@/endpoints/seed/home-static'
 
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { RenderHero } from '@/heros/RenderHero'
+import { ServicePageHero } from '@/heros/ServicePageHero'
 import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
@@ -75,6 +76,7 @@ export default async function Page({ params: paramsPromise }: Args) {
   }
 
   const { hero, layout } = displayPage
+  const HeroComponent = decodedSlug === 'home' ? RenderHero : ServicePageHero
 
   return (
     <article className="pt-1 pb-24">
@@ -86,7 +88,7 @@ export default async function Page({ params: paramsPromise }: Args) {
       {draft && <LivePreviewListener />}
 
       {/* Рендерим Hero (верхняя часть) */}
-      <RenderHero {...(hero as any)} />
+      <HeroComponent {...(hero as any)} />
 
       {/* Рендерим массив блоков (контентная часть) */}
       <RenderBlocks blocks={layout} />

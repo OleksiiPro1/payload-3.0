@@ -2,6 +2,7 @@ import { getPayload } from 'payload'
 import configPromise from '@payload-config'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { RenderHero } from '@/heros/RenderHero'
+import { ServicePageHero } from '@/heros/ServicePageHero'
 import { notFound } from 'next/navigation'
 
 const defaultLocale = 'de'
@@ -27,9 +28,11 @@ export default async function Page({
 
   if (!page) return notFound()
 
+  const HeroComponent = slug === 'home' ? RenderHero : ServicePageHero
+
   return (
     <article>
-      <RenderHero {...(page.hero as any)} />
+      <HeroComponent {...(page.hero as any)} />
       <RenderBlocks blocks={page.layout} />
     </article>
   )
