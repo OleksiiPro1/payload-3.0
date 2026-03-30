@@ -7,7 +7,7 @@ import { notFound } from 'next/navigation'
 
 const defaultLocale = 'de'
 
-export default async function Page({
+export default async function Page({ 
   params: paramsPromise,
 }: {
   params: Promise<{ locale?: string }>
