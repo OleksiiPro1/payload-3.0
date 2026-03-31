@@ -1,5 +1,3 @@
-import { getClientSideURL } from '@/utilities/getURL'
-
 const encodeMediaURL = (url: string): string => {
   if (url.startsWith('http://') || url.startsWith('https://')) {
     const parsedURL = new URL(url)
@@ -40,7 +38,6 @@ export const getMediaUrl = (url: string | null | undefined, cacheTag?: string | 
     return withCacheTag
   }
 
-  // Otherwise prepend client-side URL
-  const baseUrl = getClientSideURL()
-  return `${baseUrl}${withCacheTag}`
+  // Keep same-origin media URLs relative so they work on any device/domain.
+  return withCacheTag
 }
