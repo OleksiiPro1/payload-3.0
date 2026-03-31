@@ -17,8 +17,8 @@ export const ServicePageHero = (props: any) => {
   return (
     <section className="bg-white py-6 md:py-10">
       <div className="mx-auto max-w-7xl px-5">
-        <div className="grid items-center gap-10 rounded-[28px] bg-[#F8FCFE] px-8 py-10 md:grid-cols-2 md:px-12 md:py-14">
-          <div className="max-w-[620px]">
+        <div className="grid items-center gap-10 rounded-[28px] bg-[#F8FCFE] px-6 py-8 md:grid-cols-[minmax(0,1fr)_minmax(280px,560px)] md:px-12 md:py-14">
+          <div className="min-w-0 max-w-[620px]">
             {eyebrow && (
               <p className="mb-4 text-[13px] font-medium uppercase tracking-[0.14em] text-[#7BA7C3]">
                 {eyebrow}
@@ -26,13 +26,13 @@ export const ServicePageHero = (props: any) => {
             )}
 
             {heading && (
-              <h1 className="text-[42px] font-medium leading-[1.08] tracking-[-0.02em] text-[#565555] md:text-[56px]">
+              <h1 className="text-[36px] font-medium leading-[1.08] tracking-[-0.02em] text-[#565555] [overflow-wrap:anywhere] md:text-[48px] lg:text-[56px]">
                 {heading}
               </h1>
             )}
 
             {description && (
-              <p className="mt-6 max-w-[560px] text-[18px] font-light leading-[1.75] text-[#565555]/80">
+              <p className="mt-6 max-w-[560px] text-[17px] font-light leading-[1.75] text-[#565555]/80 [overflow-wrap:anywhere] md:text-[18px]">
                 {description}
               </p>
             )}
@@ -43,7 +43,7 @@ export const ServicePageHero = (props: any) => {
                   href={buttonUrl}
                   target={buttonNewTab ? '_blank' : undefined}
                   rel={buttonNewTab ? 'noopener noreferrer' : undefined}
-                  className="inline-flex h-[52px] items-center justify-center rounded-full bg-[#7BA7C3] px-8 text-[16px] font-medium text-white no-underline transition hover:bg-[#6d99b5]"
+                  className="inline-flex min-h-[52px] max-w-full items-center justify-center rounded-full bg-[#7BA7C3] px-6 py-3 text-center text-[16px] font-medium text-white no-underline transition hover:bg-[#6d99b5] md:px-8"
                 >
                   {buttonLabel}
                 </Link>
@@ -51,7 +51,7 @@ export const ServicePageHero = (props: any) => {
             )}
           </div>
 
-          <div className="flex justify-center md:justify-end">
+          <div className="min-w-0 flex justify-center md:justify-end">
             {media && typeof media === 'object' ? (
               <Media
                 resource={media}
