@@ -31,7 +31,9 @@ if (process.env.BLOB_READ_WRITE_TOKEN) {
   plugins.push(
     vercelBlobStorage({
       collections: {
-        media: true,
+        media: {
+          disablePayloadAccessControl: true,
+        },
       },
       token: process.env.BLOB_READ_WRITE_TOKEN,
     }) as any,
