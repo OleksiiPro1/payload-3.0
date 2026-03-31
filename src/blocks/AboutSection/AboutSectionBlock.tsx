@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 
@@ -65,13 +64,12 @@ export const AboutSectionBlock: React.FC<any> = ({
           <div className="order-1 flex justify-center lg:order-2 lg:justify-end">
             <div className="relative h-[350px] w-full max-w-[500px] md:h-[450px]">
               {doctorImageUrl && (
-                <Image
+                <img
                   src={doctorImageUrl}
                   alt={doctorImageAlt}
-                  fill
-                  className="rounded-[24px] object-cover object-center shadow-md"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  unoptimized
+                  className="h-full w-full rounded-[24px] object-cover object-center shadow-md"
+                  loading="eager"
+                  decoding="async"
                 />
               )}
             </div>
@@ -94,13 +92,12 @@ export const AboutSectionBlock: React.FC<any> = ({
                 {/* Иконка */}
                 <div className="w-16 h-16 relative">
                   {option.icon?.url && (
-                    <Image 
+                    <img 
                       src={getMediaUrl(option.icon.url, option.icon.updatedAt)} 
                       alt="icon" 
-                      width={64} 
-                      height={64} 
-                      className="object-contain text-[#565555]"
-                      unoptimized
+                      className="h-16 w-16 object-contain text-[#565555]"
+                      loading="lazy"
+                      decoding="async"
                     />
                   )}
                 </div>

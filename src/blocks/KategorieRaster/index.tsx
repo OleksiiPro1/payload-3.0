@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { cn } from '@/utilities/ui'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
@@ -42,13 +41,12 @@ export const KategorieRasterBlock: React.FC<any> = ({ ueberschrift, kategorien }
                 {/* 1. ФОНОВОЕ ИЗОБРАЖЕНИЕ */}
                 {hasImage && (
                   <>
-                    <Image
+                    <img
                       src={getMediaUrl(kategorie.bild.url, kategorie.bild.updatedAt)}
                       alt={kategorie.titel}
-                      fill
-                      className="object-cover z-0 transition-transform duration-700 group-hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      unoptimized
+                      className="absolute inset-0 z-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      loading="lazy"
+                      decoding="async"
                     />
                     {/* Мягкий градиент для читаемости текста на любом фото */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-[1]" />
@@ -61,14 +59,13 @@ export const KategorieRasterBlock: React.FC<any> = ({ ueberschrift, kategorien }
                   {/* ИКОНКА */}
                   <div className="w-12 h-12 relative transition-transform duration-500 group-hover:-translate-y-1">
                     {hasIcon && (
-                      <Image 
+                      <img 
                         src={getMediaUrl(kategorie.icon.url, kategorie.icon.updatedAt)} 
                         alt="icon" 
-                        width={48} 
-                        height={48} 
                         // Иконка белая, если есть фото, иначе — оригинал
-                        className={`object-contain ${hasImage ? 'brightness-0 invert' : ''}`} 
-                        unoptimized
+                        className={`h-12 w-12 object-contain ${hasImage ? 'brightness-0 invert' : ''}`} 
+                        loading="lazy"
+                        decoding="async"
                       />
                     )}
                   </div>

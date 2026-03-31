@@ -88,6 +88,19 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
         .map(([, value]) => `(max-width: ${value}px) ${value * 2}w`)
         .join(', ')
 
+  if (shouldBypassOptimization && typeof src === 'string') {
+    return (
+      <picture className={cn(pictureClassName)}>
+        <img
+          alt={alt || ''}
+          className={cn(imgClassName)}
+          loading={loading}
+          src={src}
+        />
+      </picture>
+    )
+  }
+
   return (
     <picture className={cn(pictureClassName)}>
       <NextImage

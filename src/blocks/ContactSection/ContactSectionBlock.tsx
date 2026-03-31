@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 
@@ -25,13 +24,12 @@ export const ContactSectionBlock: React.FC<any> = ({
           {/* ИЗОБРАЖЕНИЕ (СЛЕВА) */}
           <div className="relative h-[300px] md:h-[450px] w-full">
             {imageUrl && (
-              <Image 
-                src={imageUrl} 
-                alt={imageAlt} 
-                fill 
-                className="rounded-[32px] object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-                unoptimized
+              <img
+                src={imageUrl}
+                alt={imageAlt}
+                className="h-full w-full rounded-[32px] object-cover"
+                loading="eager"
+                decoding="async"
               />
             )}
           </div>

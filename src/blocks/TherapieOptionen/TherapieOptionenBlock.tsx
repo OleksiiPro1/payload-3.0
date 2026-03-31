@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 
@@ -48,13 +47,12 @@ export const TherapieOptionenBlock: React.FC<any> = ({
               {/* Иконка */}
               <div className="w-16 h-16 relative">
                 {option.icon?.url && (
-                  <Image 
+                  <img 
                     src={getMediaUrl(option.icon.url, option.icon.updatedAt)} 
                     alt="icon" 
-                    width={64} 
-                    height={64} 
-                    className="object-contain text-[#565555]"
-                    unoptimized
+                    className="h-16 w-16 object-contain text-[#565555]"
+                    loading="lazy"
+                    decoding="async"
                   />
                 )}
               </div>
