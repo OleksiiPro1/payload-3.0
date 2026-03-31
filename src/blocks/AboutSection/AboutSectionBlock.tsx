@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { getMediaUrl } from '@/utilities/getMediaUrl'
 
 export const AboutSectionBlock: React.FC<any> = ({ 
   // Данные доктора
@@ -15,7 +16,10 @@ export const AboutSectionBlock: React.FC<any> = ({
   cardTitleHeading,
   cardOptions
 }) => {
-  const doctorImageUrl = doctorMedia?.url || ''
+  const doctorImageUrl =
+    doctorMedia && typeof doctorMedia === 'object'
+      ? getMediaUrl(doctorMedia.url, doctorMedia.updatedAt)
+      : ''
   const doctorImageAlt = doctorMedia?.alt || 'Doctor image'
 
   return (
@@ -67,6 +71,7 @@ export const AboutSectionBlock: React.FC<any> = ({
                   fill
                   className="rounded-[24px] object-cover object-center shadow-md"
                   sizes="(max-width: 768px) 100vw, 50vw"
+                  unoptimized
                 />
               )}
             </div>
@@ -90,11 +95,12 @@ export const AboutSectionBlock: React.FC<any> = ({
                 <div className="w-16 h-16 relative">
                   {option.icon?.url && (
                     <Image 
-                      src={option.icon.url} 
+                      src={getMediaUrl(option.icon.url, option.icon.updatedAt)} 
                       alt="icon" 
                       width={64} 
                       height={64} 
                       className="object-contain text-[#565555]"
+                      unoptimized
                     />
                   )}
                 </div>
