@@ -20,9 +20,9 @@ export const RenderHero = (props: any) => {
 
   return (
     <section className="bg-white py-5">
-      <div className="mx-auto max-w-7xl px-5">
-        <div className="grid items-center gap-12 rounded-[24px] bg-[#F8FCFE] p-8 md:grid-cols-2 md:p-12">
-          <div className="max-w-[620px]">
+      <div className="mx-auto max-w-[1440px] px-5">
+        <div className="grid items-center gap-12 rounded-[24px] bg-[#F8FCFE] p-8 md:grid-cols-[minmax(0,1fr)_minmax(320px,620px)] md:p-12">
+          <div className="min-w-0 max-w-[680px]">
             {heading && (
               <h1 className="text-[55px] font-medium leading-[1.1] tracking-[-0.015em] text-[#7BA7C3]">
                 {heading}
@@ -56,11 +56,11 @@ export const RenderHero = (props: any) => {
           </div>
 
           {showMedia && (
-            <div className="flex justify-center md:justify-end">
+            <div className="min-w-0 flex justify-center md:justify-end">
               {media && typeof media === 'object' ? (
                 <Media
                   resource={media}
-                  imgClassName="h-auto w-full max-w-[560px] rounded-[20px] object-cover"
+                  imgClassName="h-auto w-full max-w-[620px] rounded-[20px] object-cover"
                   priority
                 />
               ) : (
@@ -69,7 +69,7 @@ export const RenderHero = (props: any) => {
                   alt={mediaAlt}
                   width={600}
                   height={450}
-                  className="h-auto w-full max-w-[560px] rounded-[20px] object-cover"
+                  className="h-auto w-full max-w-[620px] rounded-[20px] object-cover"
                 />
               )}
             </div>
