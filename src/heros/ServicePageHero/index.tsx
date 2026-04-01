@@ -16,8 +16,8 @@ export const ServicePageHero = (props: any) => {
 
   return (
     <section className="bg-white py-6 md:py-10">
-      <div className="mx-auto max-w-[1440px] px-5">
-        <div className="grid items-center gap-10 rounded-[28px] bg-[#F8FCFE] px-6 py-8 md:grid-cols-[minmax(0,1fr)_minmax(320px,620px)] md:px-12 md:py-14">
+      <div className="mx-auto max-w-7xl px-4 md:px-5">
+        <div className="grid items-center gap-10 rounded-[28px] bg-[#F8FCFE] px-6 py-8 lg:-mx-2 xl:-mx-3 md:grid-cols-[minmax(0,1fr)_minmax(320px,620px)] md:px-12 md:py-14">
           <div className="min-w-0 max-w-[680px]">
             {eyebrow && (
               <p className="mb-4 text-[13px] font-medium uppercase tracking-[0.14em] text-[#7BA7C3]">

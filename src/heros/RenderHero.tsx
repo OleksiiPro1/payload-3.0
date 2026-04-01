@@ -20,8 +20,8 @@ export const RenderHero = (props: any) => {
 
   return (
     <section className="bg-white py-5">
-      <div className="mx-auto max-w-[1440px] px-5">
-        <div className="grid items-center gap-12 rounded-[24px] bg-[#F8FCFE] p-8 md:grid-cols-[minmax(0,1fr)_minmax(320px,620px)] md:p-12">
+      <div className="mx-auto max-w-7xl px-4 md:px-5">
+        <div className="grid items-center gap-12 rounded-[24px] bg-[#F8FCFE] p-8 lg:-mx-2 xl:-mx-3 md:grid-cols-[minmax(0,1fr)_minmax(320px,620px)] md:p-12">
           <div className="min-w-0 max-w-[680px]">
             {heading && (
               <h1 className="text-[55px] font-medium leading-[1.1] tracking-[-0.015em] text-[#7BA7C3]">
