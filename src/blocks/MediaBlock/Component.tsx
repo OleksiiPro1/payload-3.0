@@ -2,7 +2,6 @@ import type { StaticImageData } from 'next/image'
 
 import { cn } from '@/utilities/ui'
 import React from 'react'
-import RichText from '@/components/RichText'
 
 import type { MediaBlock as MediaBlockProps } from '@/payload-types'
 
@@ -19,49 +18,19 @@ type Props = MediaBlockProps & {
 }
 
 export const MediaBlock: React.FC<Props> = (props) => {
-  const {
-    captionClassName,
-    className,
-    enableGutter = true,
-    imgClassName,
-    media,
-    staticImage,
-    disableInnerContainer,
-  } = props
-
-  let caption
-  if (media && typeof media === 'object') caption = media.caption
+  const { className, imgClassName, media, staticImage } = props
 
   return (
-    <div
-      className={cn(
-        '',
-        {
-          container: enableGutter,
-        },
-        className,
-      )}
-    >
-      {(media || staticImage) && (
-        <Media
-          imgClassName={cn('border border-border rounded-[0.8rem]', imgClassName)}
-          resource={media}
-          src={staticImage}
-        />
-      )}
-      {caption && (
-        <div
-          className={cn(
-            'mt-6',
-            {
-              container: !disableInnerContainer,
-            },
-            captionClassName,
-          )}
-        >
-          <RichText data={caption} enableGutter={false} />
-        </div>
-      )}
-    </div>
+    <section className={cn('bg-white px-5 py-10 md:py-12', className)}>
+      <div className="mx-auto max-w-7xl">
+        {(media || staticImage) && (
+          <Media
+            resource={media}
+            src={staticImage}
+            imgClassName={cn('h-auto w-full rounded-[28px] object-cover', imgClassName)}
+          />
+        )}
+      </div>
+    </section>
   )
 }
