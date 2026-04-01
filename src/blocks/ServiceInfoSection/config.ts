@@ -39,6 +39,19 @@ export const ServiceInfoSection: Block = {
       },
     },
     {
+      name: 'reasonList',
+      type: 'array',
+      label: 'Reason List',
+      fields: [
+        {
+          name: 'text',
+          type: 'text',
+          label: 'Item',
+          required: true,
+        },
+      ],
+    },
+    {
       name: 'mainImage',
       type: 'upload',
       relationTo: 'media',
@@ -89,43 +102,6 @@ export const ServiceInfoSection: Block = {
           type: 'text',
           label: 'Doctor Link URL',
           defaultValue: '#',
-        },
-      ],
-    },
-    {
-      name: 'primaryButtonLabel',
-      type: 'text',
-      label: 'Primary Button Label',
-      defaultValue: 'Jetzt Beratungstermin vereinbaren',
-    },
-    {
-      name: 'primaryButtonLink',
-      type: 'text',
-      label: 'Primary Button Link',
-      defaultValue: '#',
-    },
-    {
-      name: 'openingHoursHeading',
-      type: 'text',
-      label: 'Opening Hours Heading',
-      defaultValue: 'Ordinationszeiten',
-    },
-    {
-      name: 'openingHours',
-      type: 'array',
-      label: 'Opening Hours',
-      fields: [
-        {
-          name: 'day',
-          type: 'text',
-          label: 'Day',
-          required: true,
-        },
-        {
-          name: 'hours',
-          type: 'text',
-          label: 'Hours',
-          required: true,
         },
       ],
     },

@@ -243,6 +243,12 @@ export interface Page {
          * Use line breaks to split the content into paragraphs.
          */
         reasonBody?: string | null;
+        reasonList?:
+          | {
+              text: string;
+              id?: string | null;
+            }[]
+          | null;
         mainImage: number | Media;
         doctorCard: {
           image: number | Media;
@@ -253,16 +259,6 @@ export interface Page {
           linkLabel?: string | null;
           linkUrl?: string | null;
         };
-        primaryButtonLabel?: string | null;
-        primaryButtonLink?: string | null;
-        openingHoursHeading?: string | null;
-        openingHours?:
-          | {
-              day: string;
-              hours: string;
-              id?: string | null;
-            }[]
-          | null;
         contactHeading?: string | null;
         /**
          * Use line breaks for multiple address lines.
@@ -1136,6 +1132,12 @@ export interface PagesSelect<T extends boolean = true> {
               introDescription?: T;
               reasonHeading?: T;
               reasonBody?: T;
+              reasonList?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
               mainImage?: T;
               doctorCard?:
                 | T
@@ -1147,16 +1149,6 @@ export interface PagesSelect<T extends boolean = true> {
                     description?: T;
                     linkLabel?: T;
                     linkUrl?: T;
-                  };
-              primaryButtonLabel?: T;
-              primaryButtonLink?: T;
-              openingHoursHeading?: T;
-              openingHours?:
-                | T
-                | {
-                    day?: T;
-                    hours?: T;
-                    id?: T;
                   };
               contactHeading?: T;
               address?: T;

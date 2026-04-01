@@ -15,12 +15,9 @@ export const ServiceInfoSectionBlock: React.FC<any> = ({
   introDescription,
   reasonHeading,
   reasonBody,
+  reasonList,
   mainImage,
   doctorCard,
-  primaryButtonLabel,
-  primaryButtonLink,
-  openingHoursHeading,
-  openingHours,
   contactHeading,
   address,
   phone,
@@ -28,6 +25,8 @@ export const ServiceInfoSectionBlock: React.FC<any> = ({
 }) => {
   const introParagraphs = splitParagraphs(introDescription)
   const reasonParagraphs = splitParagraphs(reasonBody)
+  const normalizedReasonList =
+    reasonList?.map((item: { text?: string | null }) => item?.text?.trim()).filter(Boolean) || []
   const mainImageURL =
     mainImage && typeof mainImage === 'object'
       ? getMediaUrl(mainImage.url, mainImage.updatedAt)
@@ -104,16 +103,32 @@ export const ServiceInfoSectionBlock: React.FC<any> = ({
             </h3>
           )}
 
-          {reasonParagraphs.length > 0 && (
-            <div className="mt-6 space-y-4">
-              {reasonParagraphs.map((paragraph, index) => (
-                <p
-                  key={`${paragraph.slice(0, 24)}-${index}`}
-                  className="max-w-[820px] text-[17px] font-light leading-[1.8] text-[#565555]/75"
-                >
-                  {paragraph}
-                </p>
-              ))}
+          {(reasonParagraphs.length > 0 || normalizedReasonList.length > 0) && (
+            <div className="mt-6 grid gap-6 md:gap-8 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]">
+              <div className="space-y-4">
+                {reasonParagraphs.map((paragraph, index) => (
+                  <p
+                    key={`${paragraph.slice(0, 24)}-${index}`}
+                    className="text-[17px] font-light leading-[1.8] text-[#565555]/75"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+
+              <div className="rounded-[24px] bg-[#F8FCFE] px-6 py-6 md:px-8 md:py-7">
+                <ul className="space-y-4 text-[16px] font-light leading-[1.8] text-[#565555]/75">
+                  {normalizedReasonList.map((item: string, index: number) => (
+                    <li key={`${item.slice(0, 24)}-${index}`} className="relative pl-5">
+                      <span
+                        aria-hidden="true"
+                        className="absolute left-0 top-[0.8em] h-[4px] w-[4px] -translate-y-1/2 rounded-full bg-[#565555]/55"
+                      />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           )}
         </div>
@@ -166,35 +181,6 @@ export const ServiceInfoSectionBlock: React.FC<any> = ({
                 </Link>
               </div>
             )}
-          </div>
-
-          {primaryButtonLabel && (
-            <Link
-              href={primaryButtonLink || '#'}
-              className="flex h-[56px] w-full items-center justify-center rounded-full bg-[#7BA7C3] px-8 text-center text-[16px] font-medium text-white no-underline transition hover:bg-[#6d99b5]"
-            >
-              {primaryButtonLabel}
-            </Link>
-          )}
-
-          <div className="space-y-4">
-            {openingHoursHeading && (
-              <h5 className="text-[20px] font-medium text-[#565555]">{openingHoursHeading}</h5>
-            )}
-
-            {openingHours?.length ? (
-              <div className="space-y-2">
-                {openingHours.map((item: any, index: number) => (
-                  <div
-                    key={item?.id || `${item?.day || 'day'}-${index}`}
-                    className="grid grid-cols-[28px_1fr] gap-4 text-[14px] font-light text-[#565555]/75"
-                  >
-                    <span>{item?.day}</span>
-                    <span>{item?.hours}</span>
-                  </div>
-                ))}
-              </div>
-            ) : null}
           </div>
 
           <div className="space-y-4">
