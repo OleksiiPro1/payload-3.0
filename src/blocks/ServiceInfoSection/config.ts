@@ -105,29 +105,5 @@ export const ServiceInfoSection: Block = {
         },
       ],
     },
-    {
-      name: 'contactHeading',
-      type: 'text',
-      label: 'Contact Heading',
-      defaultValue: 'Kontakt',
-    },
-    {
-      name: 'address',
-      type: 'textarea',
-      label: 'Address',
-      admin: {
-        description: 'Use line breaks for multiple address lines.',
-      },
-    },
-    {
-      name: 'phone',
-      type: 'text',
-      label: 'Phone',
-    },
-    {
-      name: 'email',
-      type: 'text',
-      label: 'Email',
-    },
   ],
 }

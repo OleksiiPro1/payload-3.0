@@ -259,13 +259,6 @@ export interface Page {
           linkLabel?: string | null;
           linkUrl?: string | null;
         };
-        contactHeading?: string | null;
-        /**
-         * Use line breaks for multiple address lines.
-         */
-        address?: string | null;
-        phone?: string | null;
-        email?: string | null;
         id?: string | null;
         blockName?: string | null;
         blockType: 'serviceInfoSection';
@@ -1150,10 +1143,6 @@ export interface PagesSelect<T extends boolean = true> {
                     linkLabel?: T;
                     linkUrl?: T;
                   };
-              contactHeading?: T;
-              address?: T;
-              phone?: T;
-              email?: T;
               id?: T;
               blockName?: T;
             };

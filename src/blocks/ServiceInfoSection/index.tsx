@@ -18,10 +18,6 @@ export const ServiceInfoSectionBlock: React.FC<any> = ({
   reasonList,
   mainImage,
   doctorCard,
-  contactHeading,
-  address,
-  phone,
-  email,
 }) => {
   const introParagraphs = splitParagraphs(introDescription)
   const reasonParagraphs = splitParagraphs(reasonBody)
@@ -43,14 +39,6 @@ export const ServiceInfoSectionBlock: React.FC<any> = ({
     doctorCard?.image && typeof doctorCard.image === 'object' && 'alt' in doctorCard.image
       ? doctorCard.image.alt || 'Doctor image'
       : 'Doctor image'
-  const addressLines =
-    address
-      ?.split('\n')
-      .map((line: string) => line.trim())
-      .filter(Boolean) || []
-
-  const phoneHref = phone ? `tel:${phone.replace(/\s+/g, '')}` : null
-  const emailHref = email ? `mailto:${email}` : null
 
   return (
     <section className="bg-white px-5 py-10 md:py-12">
@@ -183,44 +171,6 @@ export const ServiceInfoSectionBlock: React.FC<any> = ({
             )}
           </div>
 
-          <div className="space-y-4">
-            {contactHeading && (
-              <h5 className="text-[20px] font-medium text-[#565555]">{contactHeading}</h5>
-            )}
-
-            {addressLines.length > 0 && (
-              <div className="flex gap-3 text-[14px] font-light leading-[1.7] text-[#565555]/75">
-                <span className="mt-[2px] text-[#7BA7C3]">Strasse:</span>
-                <div>
-                  {addressLines.map((line: string, index: number) => (
-                    <p key={`${line}-${index}`} className="m-0">
-                      {line}
-                    </p>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {phoneHref && (
-              <Link
-                href={phoneHref}
-                className="flex items-center gap-3 text-[14px] font-light text-[#565555]/75 no-underline hover:text-[#7BA7C3]"
-              >
-                <span className="text-[#7BA7C3]">Phone:</span>
-                <span>{phone}</span>
-              </Link>
-            )}
-
-            {emailHref && (
-              <Link
-                href={emailHref}
-                className="flex items-center gap-3 text-[14px] font-light text-[#565555]/75 no-underline hover:text-[#7BA7C3]"
-              >
-                <span className="text-[#7BA7C3]">Email:</span>
-                <span>{email}</span>
-              </Link>
-            )}
-          </div>
         </aside>
       </div>
     </section>
