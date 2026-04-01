@@ -9,7 +9,7 @@ export const TherapieOptionenBlock: React.FC<any> = ({
   options 
 }) => {
   return (
-    <section className="bg-white py-20 px-5">
+    <section className="bg-white px-5 py-10 md:py-12">
       <div className="mx-auto max-w-7xl">
         
         {/* ШАПКА СЕКЦИИ */}

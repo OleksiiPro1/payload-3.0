@@ -17,7 +17,7 @@ export const ContactSectionBlock: React.FC<any> = ({
     media && typeof media === 'object' && 'alt' in media ? media.alt || 'Interior' : 'Interior'
   
   return (
-    <section className="bg-white py-16 px-5">
+    <section className="bg-white px-5 py-10 md:py-12">
       <div className="mx-auto max-w-7xl overflow-hidden">
         <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-10 lg:gap-20">
           

@@ -20,7 +20,7 @@ export const ServiceTextSectionBlock: React.FC<any> = ({
     listItems?.map((item: { text?: string | null }) => item?.text?.trim()).filter(Boolean) || []
 
   return (
-    <section className="bg-white px-5 py-16 md:py-20">
+    <section className="bg-white px-5 py-10 md:py-12">
       <div className="mx-auto max-w-7xl">
         <div className="max-w-[860px]">
         {eyebrow && (

@@ -13,7 +13,7 @@ export const ServiceFAQBlock: React.FC<any> = ({ eyebrow, heading, items }) => {
     }) || []
 
   return (
-    <section className="bg-white px-5 py-16 md:py-20">
+    <section className="bg-white px-5 py-10 md:py-12">
       <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-14">
         <div className="lg:pt-1">
           {eyebrow && (

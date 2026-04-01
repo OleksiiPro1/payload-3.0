@@ -12,7 +12,7 @@ export const KategorieLeisteBlock: React.FC<any> = ({ ueberschrift, kategorien }
     displayedKategorien.length % 4 === 1
 
   return (
-    <section className="bg-white px-5 pb-16 pt-8 md:pb-20 md:pt-10">
+    <section className="bg-white px-5 py-10 md:py-12">
       <div className="mx-auto max-w-7xl">
         {ueberschrift && (
           <h2 className="mb-8 text-[32px] font-semibold leading-tight tracking-tight text-[#565555] md:text-[46px]">

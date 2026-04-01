@@ -22,7 +22,7 @@ export const AboutSectionBlock: React.FC<any> = ({
   const doctorImageAlt = doctorMedia?.alt || 'Doctor image'
 
   return (
-    <section className="bg-white py-16 px-5">
+    <section className="bg-white px-5 py-10 md:py-12">
       <div className="mx-auto max-w-7xl relative overflow-hidden rounded-[32px] bg-[#F8FCFE] p-12 md:p-16 lg:p-20 ">
         
         {/* === БЛОК 1: ДОКТОР (Сверху) === */}

@@ -9,7 +9,7 @@ export const KategorieRasterBlock: React.FC<any> = ({ ueberschrift, kategorien }
     Array.isArray(displayedKategorien) && displayedKategorien.length > 0 && displayedKategorien.length % 3 === 1
 
   return (
-    <section className="bg-white pb-20 pt-16 px-5"> 
+    <section className="bg-white px-5 py-10 md:py-12"> 
       <div className="mx-auto max-w-7xl">
         {ueberschrift && (
           <h2 className="text-[36px] md:text-[48px] font-semibold text-[#565555] mb-12 leading-tight tracking-tight">

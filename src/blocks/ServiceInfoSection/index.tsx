@@ -54,7 +54,7 @@ export const ServiceInfoSectionBlock: React.FC<any> = ({
   const emailHref = email ? `mailto:${email}` : null
 
   return (
-    <section className="bg-white px-5 py-16 md:py-20">
+    <section className="bg-white px-5 py-10 md:py-12">
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-16">
         <div>
           {eyebrow && (
