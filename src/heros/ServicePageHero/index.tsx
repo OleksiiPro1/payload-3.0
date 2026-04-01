@@ -26,7 +26,7 @@ export const ServicePageHero = (props: any) => {
             )}
 
             {heading && (
-              <h1 className="text-[36px] font-medium leading-[1.08] tracking-[-0.02em] text-[#565555] [overflow-wrap:anywhere] md:text-[48px] lg:text-[56px]">
+              <h1 className="text-[36px] font-medium leading-[1.08] tracking-[-0.02em] text-[#7BA7C3] [overflow-wrap:anywhere] md:text-[48px] lg:text-[56px]">
                 {heading}
               </h1>
             )}

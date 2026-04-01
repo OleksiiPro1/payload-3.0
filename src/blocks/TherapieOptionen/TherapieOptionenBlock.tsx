@@ -21,7 +21,7 @@ export const TherapieOptionenBlock: React.FC<any> = ({
               </span>
             )}
             {heading && (
-              <h2 className="mt-4 text-[42px] font-semibold leading-[1.1] text-[#565555]">
+              <h2 className="mt-4 text-[34px] font-medium leading-[1.18] tracking-[-0.02em] text-[#565555] md:text-[46px]">
                 {heading}
               </h2>
               
@@ -60,7 +60,7 @@ export const TherapieOptionenBlock: React.FC<any> = ({
               {/* Текст и стрелка */}
               <div className="flex items-end justify-between">
                 <div>
-                  <h3 className="text-[32px] font-semibold text-[#565555]">
+                  <h3 className="text-[32px] font-medium text-[#565555]">
                     {option.title}
                   </h3>
                   <p className="mt-2 text-[16px] text-[#565555]/60">

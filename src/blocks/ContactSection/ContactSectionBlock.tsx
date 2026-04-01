@@ -43,7 +43,7 @@ export const ContactSectionBlock: React.FC<any> = ({
             )}
             
             {heading && (
-              <h2 className="text-[32px] md:text-[42px] font-semibold text-[#565555] leading-tight mb-4">
+              <h2 className="mb-4 text-[34px] font-medium leading-[1.18] tracking-[-0.02em] text-[#565555] md:text-[46px]">
                 {heading}
               </h2>
             )}

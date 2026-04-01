@@ -37,7 +37,7 @@ export const AboutSectionBlock: React.FC<any> = ({
             )}
 
             {heading && (
-              <h2 className="mt-4 text-[38px] md:text-[46px] font-semibold leading-[1.1] text-[#565555] uppercase">
+              <h2 className="mt-4 text-[34px] font-medium leading-[1.18] tracking-[-0.02em] text-[#565555] md:text-[46px]">
                 {heading}
               </h2>
             )}
@@ -105,7 +105,7 @@ export const AboutSectionBlock: React.FC<any> = ({
                 {/* Текст и стрелка */}
                 <div className="flex items-end justify-between gap-4">
                   <div>
-                    <h4 className="text-[32px] font-semibold text-[#565555] leading-tight max-w-[80%]">
+                    <h4 className="max-w-[80%] text-[32px] font-medium leading-tight text-[#565555]">
                       {option.title}
                     </h4>
                     <p className="mt-2 text-[16px] text-[#565555]/60 max-w-[90%]">

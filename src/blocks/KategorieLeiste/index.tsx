@@ -15,7 +15,7 @@ export const KategorieLeisteBlock: React.FC<any> = ({ ueberschrift, kategorien }
     <section className="bg-white px-5 py-10 md:py-12">
       <div className="mx-auto max-w-7xl">
         {ueberschrift && (
-          <h2 className="mb-8 text-[32px] font-semibold leading-tight tracking-tight text-[#565555] md:text-[46px]">
+          <h2 className="mb-8 text-[34px] font-medium leading-[1.18] tracking-[-0.02em] text-[#565555] md:text-[46px]">
             {ueberschrift}
           </h2>
         )}

@@ -12,7 +12,7 @@ export const KategorieRasterBlock: React.FC<any> = ({ ueberschrift, kategorien }
     <section className="bg-white px-5 py-10 md:py-12"> 
       <div className="mx-auto max-w-7xl">
         {ueberschrift && (
-          <h2 className="text-[36px] md:text-[48px] font-semibold text-[#565555] mb-12 leading-tight tracking-tight">
+          <h2 className="mb-10 text-[34px] font-medium leading-[1.18] tracking-[-0.02em] text-[#565555] md:text-[46px]">
             {ueberschrift}
           </h2>
         )}
@@ -72,7 +72,7 @@ export const KategorieRasterBlock: React.FC<any> = ({ ueberschrift, kategorien }
 
                   {/* ТИТУЛ И КНОПКА */}
                   <div className="flex items-end justify-between gap-4">
-                    <h3 className={`text-[24px] font-semibold leading-tight max-w-[70%] 
+                    <h3 className={`max-w-[70%] text-[24px] font-medium leading-tight 
                       ${hasImage ? 'text-white' : 'text-[#565555]'}`}>
                       {kategorie.titel}
                     </h3>
