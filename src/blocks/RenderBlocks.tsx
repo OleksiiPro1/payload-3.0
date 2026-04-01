@@ -19,6 +19,7 @@ import { ServiceInfoSectionBlock } from '@/blocks/ServiceInfoSection'
 import { ServiceTextSectionBlock } from '@/blocks/ServiceTextSection'
 import { ServiceFAQBlock } from '@/blocks/ServiceFAQ'
 import { KategorieLeisteBlock } from '@/blocks/KategorieLeiste'
+import { ServiceSplitListBlock } from '@/blocks/ServiceSplitList'
 
 const blockComponents: Record<string, React.FC<any>> = {
   archive: ArchiveBlock,
@@ -40,6 +41,7 @@ const blockComponents: Record<string, React.FC<any>> = {
   serviceInfoSection: ServiceInfoSectionBlock,
   serviceTextSection: ServiceTextSectionBlock,
   serviceFAQ: ServiceFAQBlock,
+  serviceSplitList: ServiceSplitListBlock,
 }
 
 export const RenderBlocks: React.FC<{

@@ -314,6 +314,22 @@ export interface Page {
         blockType: 'serviceFAQ';
       }
     | {
+        heading: string;
+        /**
+         * Verwenden Sie eine Leerzeile, um Absätze zu trennen.
+         */
+        body?: string | null;
+        items?:
+          | {
+              text: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'serviceSplitList';
+      }
+    | {
         eyebrow?: string | null;
         heading: string;
         /**
@@ -1181,6 +1197,20 @@ export interface PagesSelect<T extends boolean = true> {
                 | {
                     question?: T;
                     answer?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        serviceSplitList?:
+          | T
+          | {
+              heading?: T;
+              body?: T;
+              items?:
+                | T
+                | {
+                    text?: T;
                     id?: T;
                   };
               id?: T;

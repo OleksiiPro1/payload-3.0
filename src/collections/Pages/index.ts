@@ -8,6 +8,7 @@ import { InfoSektion } from '../../blocks/InfoSektion/config'
 import { ServiceInfoSection } from '../../blocks/ServiceInfoSection/config'
 import { ServiceTextSection } from '../../blocks/ServiceTextSection/config'
 import { ServiceFAQ } from '../../blocks/ServiceFAQ/config'
+import { ServiceSplitList } from '../../blocks/ServiceSplitList/config'
 import { authenticated } from '../../access/authenticated'
 import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
 import { Archive } from '../../blocks/ArchiveBlock/config'
@@ -92,6 +93,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 ServiceInfoSection,
                 ServiceTextSection,
                 ServiceFAQ,
+                ServiceSplitList,
                 AboutSection,
                 TherapieOptionen,
                 ContactSection,
