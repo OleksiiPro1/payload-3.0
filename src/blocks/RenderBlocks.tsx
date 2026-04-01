@@ -18,6 +18,7 @@ import { TherapieOptionenBlock } from '@/blocks/TherapieOptionen/TherapieOptione
 import { ServiceInfoSectionBlock } from '@/blocks/ServiceInfoSection'
 import { ServiceTextSectionBlock } from '@/blocks/ServiceTextSection'
 import { ServiceFAQBlock } from '@/blocks/ServiceFAQ'
+import { KategorieLeisteBlock } from '@/blocks/KategorieLeiste'
 
 const blockComponents: Record<string, React.FC<any>> = {
   archive: ArchiveBlock,
@@ -30,6 +31,7 @@ const blockComponents: Record<string, React.FC<any>> = {
   
   // Твои блоки
   kategorieRaster: KategorieRasterBlock,
+  kategorieLeiste: KategorieLeisteBlock,
   infoSektion: InfoSektionBlock,
   aboutSection: AboutSectionBlock, 
   footer: FooterBlock,

@@ -3,6 +3,7 @@ import { ContactSection } from '../../blocks/ContactSection/ContactSection'
 import { TherapieOptionen } from '../../blocks/TherapieOptionen/TherapieOptionen'
 import { AboutSection } from '../../blocks/AboutSection/AboutSection'
 import { KategorieRaster } from '../../blocks/KategorieRaster/config'
+import { KategorieLeiste } from '../../blocks/KategorieLeiste/config'
 import { InfoSektion } from '../../blocks/InfoSektion/config'
 import { ServiceInfoSection } from '../../blocks/ServiceInfoSection/config'
 import { ServiceTextSection } from '../../blocks/ServiceTextSection/config'
@@ -86,6 +87,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 Archive,
                 FormBlock,
                 KategorieRaster,
+                KategorieLeiste,
                 InfoSektion,
                 ServiceInfoSection,
                 ServiceTextSection,

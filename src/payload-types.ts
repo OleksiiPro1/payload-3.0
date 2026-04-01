@@ -205,6 +205,24 @@ export interface Page {
         blockType: 'kategorieRaster';
       }
     | {
+        ueberschrift: string;
+        kategorien?:
+          | {
+              titel: string;
+              link?: string | null;
+              icon?: (number | null) | Media;
+              /**
+               * Beispiel: #F8FCFE
+               */
+              backgroundColor?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'kategorieLeiste';
+      }
+    | {
         dachzeile?: string | null;
         ueberschrift: string;
         beschreibung?: string | null;
@@ -1058,6 +1076,22 @@ export interface PagesSelect<T extends boolean = true> {
                     backgroundColor?: T;
                     link?: T;
                     icon?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        kategorieLeiste?:
+          | T
+          | {
+              ueberschrift?: T;
+              kategorien?:
+                | T
+                | {
+                    titel?: T;
+                    link?: T;
+                    icon?: T;
+                    backgroundColor?: T;
                     id?: T;
                   };
               id?: T;
