@@ -425,8 +425,6 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"_parent_id" integer NOT NULL
   );
   
-  ALTER TABLE "pages_blocks_service_info_section_opening_hours" DISABLE ROW LEVEL SECURITY;
-  ALTER TABLE "_pages_v_blocks_service_info_section_opening_hours" DISABLE ROW LEVEL SECURITY;
   DROP TABLE IF EXISTS "pages_blocks_service_info_section_opening_hours" CASCADE;
   DROP TABLE IF EXISTS "_pages_v_blocks_service_info_section_opening_hours" CASCADE;
   ALTER TABLE "pages_blocks_service_info_section" DROP CONSTRAINT IF EXISTS "pages_blocks_service_info_section_doctor_card_image_id_media_id_fk";
