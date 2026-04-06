@@ -457,6 +457,11 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "pages_blocks_cta_links" ADD COLUMN IF NOT EXISTS "_locale" "_locales" NOT NULL DEFAULT 'de';
   ALTER TABLE "pages_blocks_content_columns" ADD COLUMN IF NOT EXISTS "_locale" "_locales" NOT NULL DEFAULT 'de';
   ALTER TABLE "pages_blocks_kategorie_raster_kategorien" ADD COLUMN IF NOT EXISTS "_locale" "_locales" NOT NULL DEFAULT 'de';
+  ALTER TABLE "pages_blocks_kategorie_leiste_kategorien" ADD COLUMN IF NOT EXISTS "_locale" "_locales" NOT NULL DEFAULT 'de';
+  ALTER TABLE "pages_blocks_service_info_section_reason_list" ADD COLUMN IF NOT EXISTS "_locale" "_locales" NOT NULL DEFAULT 'de';
+  ALTER TABLE "pages_blocks_service_text_section_list_items" ADD COLUMN IF NOT EXISTS "_locale" "_locales" NOT NULL DEFAULT 'de';
+  ALTER TABLE "pages_blocks_service_f_a_q_items" ADD COLUMN IF NOT EXISTS "_locale" "_locales" NOT NULL DEFAULT 'de';
+  ALTER TABLE "pages_blocks_service_split_list_items" ADD COLUMN IF NOT EXISTS "_locale" "_locales" NOT NULL DEFAULT 'de';
   ALTER TABLE "pages_blocks_about_section_card_options" ADD COLUMN IF NOT EXISTS "_locale" "_locales" NOT NULL DEFAULT 'de';
   ALTER TABLE "pages_blocks_therapie_optionen_options" ADD COLUMN IF NOT EXISTS "_locale" "_locales" NOT NULL DEFAULT 'de';
   ALTER TABLE "pages_rels" ADD COLUMN IF NOT EXISTS "locale" "_locales";
@@ -464,6 +469,11 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "_pages_v_blocks_cta_links" ADD COLUMN IF NOT EXISTS "_locale" "_locales" NOT NULL DEFAULT 'de';
   ALTER TABLE "_pages_v_blocks_content_columns" ADD COLUMN IF NOT EXISTS "_locale" "_locales" NOT NULL DEFAULT 'de';
   ALTER TABLE "_pages_v_blocks_kategorie_raster_kategorien" ADD COLUMN IF NOT EXISTS "_locale" "_locales" NOT NULL DEFAULT 'de';
+  ALTER TABLE "_pages_v_blocks_kategorie_leiste_kategorien" ADD COLUMN IF NOT EXISTS "_locale" "_locales" NOT NULL DEFAULT 'de';
+  ALTER TABLE "_pages_v_blocks_service_info_section_reason_list" ADD COLUMN IF NOT EXISTS "_locale" "_locales" NOT NULL DEFAULT 'de';
+  ALTER TABLE "_pages_v_blocks_service_text_section_list_items" ADD COLUMN IF NOT EXISTS "_locale" "_locales" NOT NULL DEFAULT 'de';
+  ALTER TABLE "_pages_v_blocks_service_f_a_q_items" ADD COLUMN IF NOT EXISTS "_locale" "_locales" NOT NULL DEFAULT 'de';
+  ALTER TABLE "_pages_v_blocks_service_split_list_items" ADD COLUMN IF NOT EXISTS "_locale" "_locales" NOT NULL DEFAULT 'de';
   ALTER TABLE "_pages_v_blocks_about_section_card_options" ADD COLUMN IF NOT EXISTS "_locale" "_locales" NOT NULL DEFAULT 'de';
   ALTER TABLE "_pages_v_blocks_therapie_optionen_options" ADD COLUMN IF NOT EXISTS "_locale" "_locales" NOT NULL DEFAULT 'de';
   ALTER TABLE "_pages_v" ADD COLUMN IF NOT EXISTS "snapshot" boolean;
