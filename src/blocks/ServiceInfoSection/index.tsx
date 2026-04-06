@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import Link from 'next/link'
+import { LocalizedLink } from '@/components/LocalizedLink'
 import React from 'react'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 
@@ -161,12 +161,12 @@ export const ServiceInfoSectionBlock: React.FC<any> = ({
 
             {doctorCard?.linkLabel && (
               <div className="mt-4">
-                <Link
+                <LocalizedLink
                   href={doctorCard.linkUrl || '#'}
                   className="text-[13px] font-medium text-[#7BA7C3] no-underline hover:opacity-70"
                 >
                   {doctorCard.linkLabel}
-                </Link>
+                </LocalizedLink>
               </div>
             )}
           </div>

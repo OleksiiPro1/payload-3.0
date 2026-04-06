@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'next/link'
+import { LocalizedLink } from '@/components/LocalizedLink'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 
 export const TherapieOptionenBlock: React.FC<any> = ({ 
@@ -39,7 +39,7 @@ export const TherapieOptionenBlock: React.FC<any> = ({
         {/* КАРТОЧКИ */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {options?.map((option: any, index: number) => (
-            <Link 
+            <LocalizedLink 
               href={option.link || '#'} 
               key={index}
               className="group relative flex flex-col justify-between rounded-[32px] bg-[#F8FCFE] p-10 h-[380px] transition-all hover:shadow-lg border border-transparent hover:border-[#7BA7C3]/20"
@@ -74,7 +74,7 @@ export const TherapieOptionenBlock: React.FC<any> = ({
                   </svg>
                 </div>
               </div>
-            </Link>
+            </LocalizedLink>
           ))}
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'next/link'
+import { LocalizedLink } from '@/components/LocalizedLink'
 
 import { cn } from '@/utilities/ui'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
@@ -27,7 +27,7 @@ export const KategorieLeisteBlock: React.FC<any> = ({ ueberschrift, kategorien }
             const isLastCenteredCard = shouldCenterLastCard && index === displayedKategorien.length - 1
 
             return (
-              <Link
+              <LocalizedLink
                 href={kategorie.link || '#'}
                 key={index}
                 className={cn(
@@ -66,7 +66,7 @@ export const KategorieLeisteBlock: React.FC<any> = ({ ueberschrift, kategorien }
                     <path d="M5 12h14M12 5l7 7-7 7" />
                   </svg>
                 </div>
-              </Link>
+              </LocalizedLink>
             )
           })}
         </div>

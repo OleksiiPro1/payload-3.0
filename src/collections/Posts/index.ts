@@ -50,6 +50,7 @@ export const Posts: CollectionConfig<'posts'> = {
         generatePreviewPath({
           slug: data?.slug,
           collection: 'posts',
+          locale: req.locale,
           req,
         }),
     },
@@ -57,6 +58,7 @@ export const Posts: CollectionConfig<'posts'> = {
       generatePreviewPath({
         slug: data?.slug as string,
         collection: 'posts',
+        locale: req.locale,
         req,
       }),
     useAsTitle: 'title',
@@ -65,6 +67,7 @@ export const Posts: CollectionConfig<'posts'> = {
     {
       name: 'title',
       type: 'text',
+      localized: true,
       required: true,
     },
     {
@@ -80,6 +83,7 @@ export const Posts: CollectionConfig<'posts'> = {
             {
               name: 'content',
               type: 'richText',
+              localized: true,
               editor: lexicalEditor({
                 features: ({ rootFeatures }) => {
                   return [

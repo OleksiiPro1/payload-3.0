@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'next/link'
+import { LocalizedLink } from '@/components/LocalizedLink'
 import { cn } from '@/utilities/ui'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 
@@ -27,7 +27,7 @@ export const KategorieRasterBlock: React.FC<any> = ({ ueberschrift, kategorien }
             const isLastCenteredCard = shouldCenterLastCard && index === displayedKategorien.length - 1
             
             return (
-              <Link 
+              <LocalizedLink 
                 href={kategorie.link || '#'} 
                 key={index}
                 className={cn(
@@ -89,7 +89,7 @@ export const KategorieRasterBlock: React.FC<any> = ({ ueberschrift, kategorien }
                     </div>
                   </div>
                 </div>
-              </Link>
+              </LocalizedLink>
             )
           })}
         </div>

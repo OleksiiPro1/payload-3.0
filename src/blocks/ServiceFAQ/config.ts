@@ -10,12 +10,14 @@ export const ServiceFAQ: Block = {
     {
       name: 'eyebrow',
       type: 'text',
+      localized: true,
       label: 'Eyebrow',
       defaultValue: 'Häufig gestellte Fragen',
     },
     {
       name: 'heading',
       type: 'text',
+      localized: true,
       label: 'Heading',
       required: true,
       defaultValue: 'Häufig gestellte Fragen',
@@ -23,6 +25,7 @@ export const ServiceFAQ: Block = {
     {
       name: 'items',
       type: 'array',
+      localized: true,
       label: 'Questions',
       minRows: 1,
       fields: [

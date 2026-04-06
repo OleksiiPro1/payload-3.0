@@ -12,6 +12,7 @@ export const Header: GlobalConfig = {
     {
       name: 'navItems',
       type: 'array',
+      localized: true,
       fields: [
         link({
           appearances: false,
@@ -28,6 +29,7 @@ export const Header: GlobalConfig = {
     {
       name: 'phone',
       type: 'text',
+      localized: true,
       label: 'Telefonnummer',
       defaultValue: '+43 123 456 789',
     },

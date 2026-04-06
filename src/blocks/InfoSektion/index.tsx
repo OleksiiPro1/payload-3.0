@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'next/link'
+import { LocalizedLink } from '@/components/LocalizedLink'
 
 export const InfoSektionBlock: React.FC<any> = ({ dachzeile, ueberschrift, beschreibung, link }) => {
   return (
@@ -27,12 +27,12 @@ export const InfoSektionBlock: React.FC<any> = ({ dachzeile, ueberschrift, besch
         )}
 
         {link?.url && (
-          <Link
+          <LocalizedLink
             href={link.url}
             className="inline-flex h-[50px] items-center justify-center rounded-full bg-[#7BA7C3] px-10 text-[16px] font-medium text-white transition-all hover:bg-[#6d99b5] hover:shadow-lg"
           >
             {link.label || 'Mehr erfahren'}
-          </Link>
+          </LocalizedLink>
         )}
       </div>
     </section>

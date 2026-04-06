@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'next/link'
+import { LocalizedLink } from '@/components/LocalizedLink'
 
 export const FooterBlock: React.FC<any> = (props) => {
   // Вытаскиваем данные. Если данных нет, используем пустые значения, чтобы не упало
@@ -68,8 +68,8 @@ export const FooterBlock: React.FC<any> = (props) => {
         <div className="mt-10 flex flex-col md:flex-row justify-between items-center text-[13px] text-gray-400 px-4">
           <p>{copyright}</p>
           <div className="flex gap-8 mt-4 md:mt-0">
-            <Link href="/impressum" className="hover:text-[#7BA7C3] transition">Impressum</Link>
-            <Link href="/datenschutz" className="hover:text-[#7BA7C3] transition">Datenschutz</Link>
+            <LocalizedLink href="/impressum" className="hover:text-[#7BA7C3] transition">Impressum</LocalizedLink>
+            <LocalizedLink href="/datenschutz" className="hover:text-[#7BA7C3] transition">Datenschutz</LocalizedLink>
           </div>
         </div>
       </div>

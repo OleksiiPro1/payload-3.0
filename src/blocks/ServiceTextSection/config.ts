@@ -10,18 +10,21 @@ export const ServiceTextSection: Block = {
     {
       name: 'eyebrow',
       type: 'text',
+      localized: true,
       label: 'Eyebrow',
       defaultValue: 'IHR SPEZIALIST FÜR ORTHOPÄDIE',
     },
     {
       name: 'heading',
       type: 'text',
+      localized: true,
       label: 'Heading',
       required: true,
     },
     {
       name: 'body',
       type: 'textarea',
+      localized: true,
       label: 'Text',
       admin: {
         description: 'Verwenden Sie eine Leerzeile, um Absätze zu trennen.',
@@ -30,11 +33,13 @@ export const ServiceTextSection: Block = {
     {
       name: 'listHeading',
       type: 'text',
+      localized: true,
       label: 'List Heading',
     },
     {
       name: 'listItems',
       type: 'array',
+      localized: true,
       label: 'List Items',
       fields: [
         {
@@ -48,6 +53,7 @@ export const ServiceTextSection: Block = {
     {
       name: 'button',
       type: 'group',
+      localized: true,
       label: 'Button',
       fields: [
         {

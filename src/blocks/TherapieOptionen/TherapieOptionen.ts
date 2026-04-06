@@ -10,23 +10,27 @@ export const TherapieOptionen: Block = {
     {
       name: 'eyebrow',
       type: 'text',
+      localized: true,
       label: 'Eyebrow',
       defaultValue: 'BEHANDLUNGSMÖGLICHKEITEN',
     },
     {
       name: 'heading',
       type: 'text',
+      localized: true,
       label: 'Heading',
       required: true,
     },
     {
       name: 'description',
       type: 'textarea',
+      localized: true,
       label: 'Description (rechts)',
     },
     {
       name: 'options',
       type: 'array',
+      localized: true,
       label: 'Therapie Optionen',
       minRows: 2,
       maxRows: 2,

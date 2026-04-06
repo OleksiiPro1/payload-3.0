@@ -22,6 +22,14 @@ export const PageRange: React.FC<{
   currentPage?: number
   limit?: number
   totalDocs?: number
+  zeroLabel?: string
+  summaryLabel?: (args: {
+    indexStart: number
+    indexEnd: number
+    totalDocs: number
+    singular?: string
+    plural?: string
+  }) => string
 }> = (props) => {
   const {
     className,
@@ -30,6 +38,8 @@ export const PageRange: React.FC<{
     currentPage,
     limit,
     totalDocs,
+    summaryLabel,
+    zeroLabel,
   } = props
 
   let indexStart = (currentPage ? currentPage - 1 : 1) * (limit || 1) + 1
@@ -46,12 +56,21 @@ export const PageRange: React.FC<{
 
   return (
     <div className={[className, 'font-semibold'].filter(Boolean).join(' ')}>
-      {(typeof totalDocs === 'undefined' || totalDocs === 0) && 'Search produced no results.'}
+      {(typeof totalDocs === 'undefined' || totalDocs === 0) &&
+        (zeroLabel || 'Search produced no results.')}
       {typeof totalDocs !== 'undefined' &&
         totalDocs > 0 &&
-        `Showing ${indexStart}${indexStart > 0 ? ` - ${indexEnd}` : ''} of ${totalDocs} ${
-          totalDocs > 1 ? plural : singular
-        }`}
+        (summaryLabel
+          ? summaryLabel({
+              indexStart,
+              indexEnd,
+              totalDocs,
+              plural,
+              singular,
+            })
+          : `Showing ${indexStart}${indexStart > 0 ? ` - ${indexEnd}` : ''} of ${totalDocs} ${
+              totalDocs > 1 ? plural : singular
+            }`)}
     </div>
   )
 }

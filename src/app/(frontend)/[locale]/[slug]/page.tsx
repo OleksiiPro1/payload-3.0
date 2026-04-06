@@ -13,6 +13,7 @@ import { ServicePageHero } from '@/heros/ServicePageHero'
 import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
+import { defaultLocale, isSupportedLocale } from '@/utilities/i18n'
 
 /**
  * Генерируем статические параметры для всех страниц из базы данных.
@@ -55,13 +56,14 @@ type Args = {
 export default async function Page({ params: paramsPromise }: Args) {
   const { isEnabled: draft } = await draftMode()
   const { slug = 'home', locale } = await paramsPromise
+  const activeLocale = isSupportedLocale(locale) ? locale : defaultLocale
   const decodedSlug = decodeURIComponent(slug)
-  const url = '/' + (locale !== 'de' ? `${locale}/` : '') + decodedSlug
+  const url = '/' + (activeLocale !== defaultLocale ? `${activeLocale}/` : '') + decodedSlug
 
   // Запрашиваем данные страницы из Payload
   const page = await queryPageBySlug({
     slug: decodedSlug,
-    locale: locale as any,
+    locale: activeLocale,
   })
 
   // Если страницы нет в БД, но это главная — используем статический сид (заглушку)
@@ -101,11 +103,12 @@ export default async function Page({ params: paramsPromise }: Args) {
  */
 export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
   const { slug = 'home', locale } = await paramsPromise
+  const activeLocale = isSupportedLocale(locale) ? locale : defaultLocale
   const decodedSlug = decodeURIComponent(slug)
   
   const page = await queryPageBySlug({
     slug: decodedSlug,
-    locale: locale as any,
+    locale: activeLocale,
   })
 
   return generateMeta({ doc: page })

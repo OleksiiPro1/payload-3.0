@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { LocalizedLink } from '@/components/LocalizedLink'
 import React from 'react'
 import { getCachedGlobal } from '@/utilities/getGlobals'
 
@@ -54,11 +54,11 @@ export async function Footer() {
         <div className="rounded-[24px] bg-[#F3F8FB] px-6 py-8 md:px-10 md:py-10" >
           <div className="grid grid-cols-1 gap-10 md:grid-cols-[1.2fr_1fr_1fr] md:items-start">
             <div className="flex items-start">
-              <Link href="/" className="inline-flex items-center no-underline">
+              <LocalizedLink href="/" className="inline-flex items-center no-underline">
                 <span className="text-[42px] font-light leading-none tracking-tight text-[#84BDD9] md:text-[50px]">
                   OrthoMed
                 </span>
-              </Link>
+              </LocalizedLink>
             </div>
 
             <div className="text-[13px] leading-[1.9] text-[#8A94A6]">
@@ -68,9 +68,9 @@ export async function Footer() {
               <div className="mt-4 space-y-2">
                 <p>
                   <span className="mr-2 text-[#8FC3E0]">T:</span>
-                  <Link href={phoneHref} className="hover:text-[#84BDD9]">
+                  <LocalizedLink href={phoneHref} className="hover:text-[#84BDD9]">
                     {phone}
-                  </Link>
+                  </LocalizedLink>
                 </p>
 
                 <p>
@@ -104,12 +104,12 @@ export async function Footer() {
           <div className="mt-6 flex items-center justify-between border-t border-[#E4EEF4] pt-4 text-[10px] text-[#A1AAB8]">
             <span>© 2026 Dr. Lorem Ipsum</span>
 
-            <Link
+            <LocalizedLink
               href="/impressum"
               className="uppercase tracking-[0.16em] hover:text-[#84BDD9]"
             >
               Impressum
-            </Link>
+            </LocalizedLink>
           </div>
         </div>
       </div>

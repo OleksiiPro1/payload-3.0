@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'next/link'
+import { LocalizedLink } from '@/components/LocalizedLink'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 
 export const AboutSectionBlock: React.FC<any> = ({ 
@@ -50,12 +50,12 @@ export const AboutSectionBlock: React.FC<any> = ({
 
             {doctorButtonLabel && (
               <div className="mt-10">
-                <Link
+                <LocalizedLink
                   href={doctorButtonLink || '#'}
                   className="inline-flex h-[54px] items-center justify-center rounded-full bg-[#7BA7C3]/70 px-8 text-[16px] font-medium text-white transition hover:bg-[#7BA7C3] shadow-sm"
                 >
                   {doctorButtonLabel}
-                </Link>
+                </LocalizedLink>
               </div>
             )}
           </div>
@@ -84,7 +84,7 @@ export const AboutSectionBlock: React.FC<any> = ({
           {/* КАРТОЧКИ (Сетка из 2) */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {cardOptions?.map((option: any, index: number) => (
-              <Link 
+              <LocalizedLink 
                 href={option.link || '#'} 
                 key={index}
                 className="group relative flex flex-col justify-between rounded-[32px] bg-white p-10 h-[380px] transition-all hover:shadow-xl border border-gray-100 hover:border-[#7BA7C3]/10"
@@ -119,7 +119,7 @@ export const AboutSectionBlock: React.FC<any> = ({
                     </svg>
                   </div>
                 </div>
-              </Link>
+              </LocalizedLink>
             ))}
           </div>
         </div>

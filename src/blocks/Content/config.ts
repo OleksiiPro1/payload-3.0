@@ -70,6 +70,7 @@ export const Content: Block = {
     {
       name: 'columns',
       type: 'array',
+      localized: true,
       admin: {
         initCollapsed: true,
       },

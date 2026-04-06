@@ -4,20 +4,21 @@ import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { RenderHero } from '@/heros/RenderHero'
 import { ServicePageHero } from '@/heros/ServicePageHero'
 import { notFound } from 'next/navigation'
-
-const defaultLocale = 'de'
+import { defaultLocale, isSupportedLocale } from '@/utilities/i18n'
 
 export default async function Page({ 
   params: paramsPromise,
 }: {
   params: Promise<{ locale?: string }>
 }) {
-  const { locale } = await paramsPromise
-  const slug = !locale || locale === defaultLocale ? 'home' : locale
+  const { locale: localeOrSlug } = await paramsPromise
+  const activeLocale = isSupportedLocale(localeOrSlug) ? localeOrSlug : defaultLocale
+  const slug = !localeOrSlug || isSupportedLocale(localeOrSlug) ? 'home' : localeOrSlug
   const payload = await getPayload({ config: configPromise })
 
   const result = await payload.find({
     collection: 'pages',
+    locale: activeLocale as any,
     where: {
       slug: { equals: slug },
     },
@@ -37,6 +38,5 @@ export default async function Page({
     </article>
   )
 }
-
 
 

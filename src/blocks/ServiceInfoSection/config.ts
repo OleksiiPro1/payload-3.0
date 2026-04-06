@@ -10,29 +10,34 @@ export const ServiceInfoSection: Block = {
     {
       name: 'eyebrow',
       type: 'text',
+      localized: true,
       label: 'Eyebrow',
       defaultValue: 'IHR SPEZIALIST FUR ORTHOPADIE',
     },
     {
       name: 'introHeading',
       type: 'textarea',
+      localized: true,
       label: 'Intro Heading',
       required: true,
     },
     {
       name: 'introDescription',
       type: 'textarea',
+      localized: true,
       label: 'Intro Description',
     },
     {
       name: 'reasonHeading',
       type: 'text',
+      localized: true,
       label: 'Reason Heading',
       required: true,
     },
     {
       name: 'reasonBody',
       type: 'textarea',
+      localized: true,
       label: 'Reason Body',
       admin: {
         description: 'Use line breaks to split the content into paragraphs.',
@@ -41,6 +46,7 @@ export const ServiceInfoSection: Block = {
     {
       name: 'reasonList',
       type: 'array',
+      localized: true,
       label: 'Reason List',
       fields: [
         {
@@ -61,6 +67,7 @@ export const ServiceInfoSection: Block = {
     {
       name: 'doctorCard',
       type: 'group',
+      localized: true,
       label: 'Doctor Card',
       fields: [
         {

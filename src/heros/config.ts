@@ -34,16 +34,19 @@ export const hero: Field = {
     {
       name: 'heading',
       type: 'text',
+      localized: true,
       label: 'Heading',
     },
     {
       name: 'eyebrow',
       type: 'text',
+      localized: true,
       label: 'Eyebrow',
     },
     {
       name: 'description',
       type: 'textarea',
+      localized: true,
       label: 'Description',
     },
     linkGroup({
@@ -51,6 +54,7 @@ export const hero: Field = {
         name: 'links',
         label: 'Buttons',
         maxRows: 2,
+        localized: true,
       },
     }),
     {

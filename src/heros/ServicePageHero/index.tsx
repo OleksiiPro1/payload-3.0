@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { LocalizedLink } from '@/components/LocalizedLink'
 import { Media } from '@/components/Media'
 
 export const ServicePageHero = (props: any) => {
@@ -39,14 +39,14 @@ export const ServicePageHero = (props: any) => {
 
             {firstLink && (
               <div className="mt-8">
-                <Link
+                <LocalizedLink
                   href={buttonUrl}
                   target={buttonNewTab ? '_blank' : undefined}
                   rel={buttonNewTab ? 'noopener noreferrer' : undefined}
                   className="inline-flex min-h-[52px] max-w-full items-center justify-center rounded-full bg-[#7BA7C3] px-6 py-3 text-center text-[16px] font-medium text-white no-underline transition hover:bg-[#6d99b5] md:px-8"
                 >
                   {buttonLabel}
-                </Link>
+                </LocalizedLink>
               </div>
             )}
           </div>

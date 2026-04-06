@@ -15,6 +15,7 @@ import { Categories } from './collections/Categories'
 import { Header } from './Header/config'
 import { Footer } from './Footer/config'
 import { migrations } from './migrations'
+import { defaultLocale, locales } from './utilities/i18n'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -46,6 +47,14 @@ export default buildConfig({
     importMap: {
       baseDir: path.resolve(dirname),
     },
+  },
+  localization: {
+    locales: locales.map((locale) => ({
+      code: locale,
+      label: locale === 'de' ? 'Deutsch' : 'English',
+    })),
+    defaultLocale,
+    fallback: true,
   },
   collections: [Pages, Posts, Categories, Media, Users],
   globals: [Header, Footer],

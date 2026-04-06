@@ -10,12 +10,14 @@ export const KategorieLeiste: Block = {
     {
       name: 'ueberschrift',
       type: 'text',
+      localized: true,
       label: 'Überschrift',
       required: true,
     },
     {
       name: 'kategorien',
       type: 'array',
+      localized: true,
       label: 'Kategorien',
       minRows: 1,
       fields: [

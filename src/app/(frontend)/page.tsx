@@ -4,6 +4,7 @@ import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { RenderHero } from '@/heros/RenderHero'
 import { notFound } from 'next/navigation'
 import React from 'react'
+import { defaultLocale } from '@/utilities/i18n'
 
 export default async function Page() {
   const payload = await getPayload({ config: configPromise })
@@ -16,7 +17,7 @@ export default async function Page() {
       },
     },
     // Добавляем 'as any', чтобы убрать ошибку типизации
-    locale: 'de' as any, 
+    locale: defaultLocale as any,
     limit: 1,
   })
 

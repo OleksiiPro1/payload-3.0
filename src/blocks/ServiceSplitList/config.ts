@@ -10,12 +10,14 @@ export const ServiceSplitList: Block = {
     {
       name: 'heading',
       type: 'text',
+      localized: true,
       label: 'Heading',
       required: true,
     },
     {
       name: 'body',
       type: 'textarea',
+      localized: true,
       label: 'Left Column Text',
       admin: {
         description: 'Verwenden Sie eine Leerzeile, um Absätze zu trennen.',
@@ -24,6 +26,7 @@ export const ServiceSplitList: Block = {
     {
       name: 'items',
       type: 'array',
+      localized: true,
       label: 'Right Column List',
       minRows: 1,
       fields: [

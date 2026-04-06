@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { LocalizedLink } from '@/components/LocalizedLink'
 import React from 'react'
 
 const splitParagraphs = (value?: string | null) =>
@@ -68,12 +68,12 @@ export const ServiceTextSectionBlock: React.FC<any> = ({
 
         {button?.label && (
           <div className="mt-10">
-            <Link
+            <LocalizedLink
               href={button.url || '#'}
               className="inline-flex h-[54px] items-center justify-center rounded-full bg-[#7BA7C3] px-8 text-[15px] font-medium text-white no-underline transition hover:bg-[#6d99b5]"
             >
               {button.label}
-            </Link>
+            </LocalizedLink>
           </div>
         )}
         </div>

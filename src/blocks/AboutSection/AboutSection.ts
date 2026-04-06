@@ -11,18 +11,21 @@ export const AboutSection: Block = {
     {
       name: 'eyebrow',
       type: 'text',
+      localized: true,
       label: 'Eyebrow',
       defaultValue: 'IHR SPEZIALIST FÜR ORTHOPÄDIE',
     },
     {
       name: 'heading',
       type: 'text',
+      localized: true,
       label: 'Doctor Name (Heading)',
       required: true,
     },
     {
       name: 'description',
       type: 'textarea',
+      localized: true,
       label: 'Doctor Description',
       admin: {
         description: 'Verwenden Sie Enter, um Absätze zu trennen.',
@@ -38,19 +41,22 @@ export const AboutSection: Block = {
     {
       name: 'doctorButtonLabel',
       type: 'text',
+      localized: true,
       label: 'Doctor Button Label',
     },
     {
       name: 'doctorButtonLink',
       type: 'text',
+      localized: true,
       label: 'Doctor Button Link',
       defaultValue: '#',
     },
 
 
     {
-      name: 'cardOptions', 
+      name: 'cardOptions',
       type: 'array',
+      localized: true,
       label: 'Therapy Option Cards',
       minRows: 2,
       maxRows: 2, 

@@ -9,20 +9,29 @@ import React from 'react'
 import { Search } from '@/search/Component'
 import PageClient from './page.client'
 import { CardPostData } from '@/components/Card'
+import { defaultLocale, isSupportedLocale } from '@/utilities/i18n'
 
 type Args = {
+  params: Promise<{
+    locale: string
+  }>
   searchParams: Promise<{
     q: string
   }>
 }
-export default async function Page({ searchParams: searchParamsPromise }: Args) {
+export default async function Page({ params: paramsPromise, searchParams: searchParamsPromise }: Args) {
+  const { locale } = await paramsPromise
+  const activeLocale = isSupportedLocale(locale) ? locale : defaultLocale
   const { q: query } = await searchParamsPromise
   const payload = await getPayload({ config: configPromise })
+  const searchTitle = activeLocale === 'en' ? 'Search' : 'Suche'
+  const emptyLabel = activeLocale === 'en' ? 'No results found.' : 'Keine Ergebnisse gefunden.'
 
   const posts = await payload.find({
     collection: 'search',
     depth: 1,
     limit: 12,
+    locale: activeLocale as any,
     select: {
       title: true,
       slug: true,
@@ -66,7 +75,7 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
       <PageClient />
       <div className="container mb-16">
         <div className="prose dark:prose-invert max-w-none text-center">
-          <h1 className="mb-8 lg:mb-16">Search</h1>
+          <h1 className="mb-8 lg:mb-16">{searchTitle}</h1>
 
           <div className="max-w-[50rem] mx-auto">
             <Search />
@@ -77,7 +86,7 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
       {posts.totalDocs > 0 ? (
         <CollectionArchive posts={posts.docs as CardPostData[]} />
       ) : (
-        <div className="container">No results found.</div>
+        <div className="container">{emptyLabel}</div>
       )}
     </div>
   )

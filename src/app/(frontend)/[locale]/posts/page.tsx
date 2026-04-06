@@ -7,6 +7,7 @@ import { getPayload } from 'payload'
 import React from 'react'
 import PageClient from './page.client'
 import { notFound } from 'next/navigation'
+import { defaultLocale, isSupportedLocale } from '@/utilities/i18n'
 
 // ГОВОРИМ NEXT.JS НЕ СОБИРАТЬ ЭТУ СТРАНИЦУ ЗАРАНЕЕ
 export const dynamic = 'force-dynamic'
@@ -21,6 +22,7 @@ type Args = {
 
 export default async function Page({ params: paramsPromise }: Args) {
   const { pageNumber, locale } = await paramsPromise
+  const activeLocale = isSupportedLocale(locale) ? locale : defaultLocale
   const payload = await getPayload({ config: configPromise })
 
   const sanitizedPageNumber = parseInt(pageNumber)
@@ -34,28 +36,47 @@ export default async function Page({ params: paramsPromise }: Args) {
     depth: 1,
     limit: 12,
     page: sanitizedPageNumber,
-    locale: locale as any,
+    locale: activeLocale as any,
     overrideAccess: false,
   })
 
   // Если постов нет на этой странице — 404
   if (!posts.docs || posts.docs.length === 0) return notFound()
 
+  const title = activeLocale === 'en' ? 'Posts' : 'Beiträge'
+  const singularLabel = activeLocale === 'en' ? 'Post' : 'Beitrag'
+  const pluralLabel = activeLocale === 'en' ? 'Posts' : 'Beiträge'
+  const zeroLabel = activeLocale === 'en' ? 'No posts found.' : 'Keine Beiträge gefunden.'
+
   return (
     <div className="pt-24 pb-24">
       <PageClient />
       <div className="container mb-16">
         <div className="prose dark:prose-invert max-w-none">
-          <h1>Posts</h1>
+          <h1>{title}</h1>
         </div>
       </div>
 
       <div className="container mb-8">
         <PageRange
           collection="posts"
+          collectionLabels={{
+            singular: singularLabel,
+            plural: pluralLabel,
+          }}
           currentPage={posts.page}
           limit={12}
           totalDocs={posts.totalDocs}
+          zeroLabel={zeroLabel}
+          summaryLabel={({ indexStart, indexEnd, totalDocs, singular, plural }) =>
+            activeLocale === 'en'
+              ? `Showing ${indexStart}${indexStart > 0 ? ` - ${indexEnd}` : ''} of ${totalDocs} ${
+                  totalDocs > 1 ? plural : singular
+                }`
+              : `Zeige ${indexStart}${indexStart > 0 ? ` - ${indexEnd}` : ''} von ${totalDocs} ${
+                  totalDocs > 1 ? plural : singular
+                }`
+          }
         />
       </div>
 

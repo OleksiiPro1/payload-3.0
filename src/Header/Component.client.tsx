@@ -1,17 +1,22 @@
 'use client'
 import React, { useState } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { cn } from '@/utilities/ui'
+import { getLocaleFromPathname, localizeHref } from '@/utilities/i18n'
 
 export const HeaderClient: React.FC<{ data: any }> = ({ data }) => {
   const [isOpen, setIsOpen] = useState(false)
   const { navItems, phone } = data || {}
+  const pathname = usePathname()
+  const locale = getLocaleFromPathname(pathname)
+  const appointmentLabel = locale === 'en' ? 'Book appointment' : 'Termin vereinbaren'
 
   return (
     <header className="w-full bg-white px-5 pt-6 font-sans">
       <div className="mx-auto max-w-7xl">
         <div className="flex h-[72px] items-center justify-between rounded-full bg-[#F8FCFE] border border-white/40 px-6 md:px-8 shadow-sm backdrop-blur-md">
-          <Link href="/" className="flex items-center shrink-0">
+          <Link href={localizeHref('/', locale)} className="flex items-center shrink-0">
             <span className="text-[22px] md:text-[24px] font-semibold text-[#7BA7C3]">Ortho</span>
             <span className="text-[22px] md:text-[24px] font-light text-[#7BA7C3]">Med</span>
           </Link>
@@ -23,7 +28,7 @@ export const HeaderClient: React.FC<{ data: any }> = ({ data }) => {
               return (
                 <Link 
                   key={i} 
-                  href={href} 
+                  href={localizeHref(href, locale)} 
                   className="text-[14px] xl:text-[15px] font-medium text-[#565555] no-underline transition hover:text-[#7BA7C3]"
                 >
                   {label}
@@ -41,10 +46,10 @@ export const HeaderClient: React.FC<{ data: any }> = ({ data }) => {
             )}
 
             <Link 
-              href="/kontakt" 
+              href={localizeHref('/kontakt', locale)} 
               className="rounded-full border border-[#7BA7C3] px-4 py-2 md:px-6 md:py-2.5 text-[13px] md:text-[15px] font-medium text-[#7BA7C3] no-underline transition hover:bg-[#7BA7C3] hover:text-white shrink-0"
             >
-              Termin <span className="hidden sm:inline">vereinbaren</span>
+              {appointmentLabel}
             </Link>
 
             <button 
@@ -68,7 +73,7 @@ export const HeaderClient: React.FC<{ data: any }> = ({ data }) => {
             {navItems?.map((item: any, i: number) => (
               <Link 
                 key={i} 
-                href={item.link?.url || '#'} 
+                href={localizeHref(item.link?.url || '#', locale)} 
                 onClick={() => setIsOpen(false)}
                 className="text-[18px] font-medium text-[#565555] no-underline"
               >

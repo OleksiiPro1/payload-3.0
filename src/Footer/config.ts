@@ -13,21 +13,25 @@ export const Footer: GlobalConfig = {
     {
       name: 'address',
       type: 'textarea',
+      localized: true,
       label: 'Adresse',
     },
     {
       name: 'phone',
       type: 'text',
+      localized: true,
       label: 'Telefonnummer',
     },
     {
       name: 'email',
       type: 'text',
+      localized: true,
       label: 'E-Mail',
     },
     {
       name: 'openingHours',
       type: 'array',
+      localized: true,
       label: 'Öffnungszeiten',
       fields: [
         {

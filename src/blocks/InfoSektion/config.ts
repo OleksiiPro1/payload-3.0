@@ -10,22 +10,26 @@ export const InfoSektion: Block = {
     {
       name: 'dachzeile',
       type: 'text',
+      localized: true,
       label: 'Dachzeile (Eyebrow)', // Например: "UNSERE PHILOSOPHIE"
     },
     {
       name: 'ueberschrift',
       type: 'text',
+      localized: true,
       label: 'Überschrift', // Например: "Warum OrthoMed"
       required: true,
     },
     {
       name: 'beschreibung',
       type: 'textarea',
+      localized: true,
       label: 'Beschreibung',
     },
     {
       name: 'link',
       type: 'group',
+      localized: true,
       label: 'Button',
       fields: [
         {
