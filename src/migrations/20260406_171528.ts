@@ -476,6 +476,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "footer_opening_hours" ADD COLUMN IF NOT EXISTS "_locale" "_locales" NOT NULL DEFAULT 'de';
   -- Constraints, indexes, and old-column cleanup are intentionally skipped here
   -- to make this localization migration safe for partially-migrated production databases.
+  `)
 }
 
 export async function down({ db, payload, req }: MigrateDownArgs): Promise<void> {
