@@ -1,0 +1,21 @@
+
+> db:migrate
+> cross-env NODE_OPTIONS=--no-deprecation payload migrate
+
+(node:55068) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[22:20:34] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+[22:20:34] [32mINFO[39m: [36mReading migration files from /Users/oleksiipiltenko/projects/payload-3.0/src/migrations[39m
+[?25l[2K[1G[36m?[39m [1mIt looks like you've run Payload in dev mode, meaning you've dynamically pushed changes to your database.
+
+If you'd like to run migrations, data loss will occur. Would you like to proceed?[22m [90m›[39m [90m(y/N)[39m[2K[1G[2K[1G[31m✖[39m [1mIt looks like you've run Payload in dev mode, meaning you've dynamically pushed changes to your database.
+
+If you'd like to run migrations, data loss will occur. Would you like to proceed?[22m [90m…[39m no
+[?25h
