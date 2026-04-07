@@ -1,5 +1,6 @@
 import { PayloadRequest, CollectionSlug } from 'payload'
 import { AppLocale, defaultLocale, isSupportedLocale } from './i18n'
+import { getPreviewSecret } from './getPreviewSecret'
 
 const collectionPrefixMap: Partial<Record<CollectionSlug, string>> = {
   posts: '/posts',
@@ -31,7 +32,7 @@ export const generatePreviewPath = ({ collection, locale, slug }: Props) => {
     slug: encodedSlug,
     collection,
     path: localizedPath,
-    previewSecret: process.env.PREVIEW_SECRET || '',
+    previewSecret: getPreviewSecret(),
   })
 
   const url = `/next/preview?${encodedParams.toString()}`

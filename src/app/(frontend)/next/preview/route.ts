@@ -6,6 +6,7 @@ import { redirect } from 'next/navigation'
 import { NextRequest } from 'next/server'
 
 import configPromise from '@payload-config'
+import { getPreviewSecret } from '@/utilities/getPreviewSecret'
 
 export async function GET(req: NextRequest): Promise<Response> {
   const payload = await getPayload({ config: configPromise })
@@ -17,7 +18,7 @@ export async function GET(req: NextRequest): Promise<Response> {
   const slug = searchParams.get('slug')
   const previewSecret = searchParams.get('previewSecret')
 
-  if (previewSecret !== process.env.PREVIEW_SECRET) {
+  if (previewSecret !== getPreviewSecret()) {
     return new Response('You are not allowed to preview this page', { status: 403 })
   }
 
@@ -32,10 +33,11 @@ export async function GET(req: NextRequest): Promise<Response> {
   let user
 
   try {
-    user = await payload.auth({
+    const authResult = await payload.auth({
       req: req as unknown as PayloadRequest,
       headers: req.headers,
     })
+    user = authResult?.user
   } catch (error) {
     payload.logger.error({ err: error }, 'Error verifying token for live preview')
     return new Response('You are not allowed to preview this page', { status: 403 })
