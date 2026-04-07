@@ -1,9 +1,9 @@
 export const dynamic = 'force-dynamic'
 import type { Metadata } from 'next'
-import { PayloadRedirects } from '@/components/PayloadRedirects'
 import configPromise from '@payload-config'
 import { getPayload, type RequiredDataFromCollectionSlug } from 'payload'
 import { draftMode } from 'next/headers'
+import { notFound } from 'next/navigation'
 import React, { cache } from 'react'
 import { homeStatic } from '@/endpoints/seed/home-static'
 
@@ -72,9 +72,9 @@ export default async function Page({ params: paramsPromise }: Args) {
     displayPage = homeStatic as any
   }
 
-  // Если страницы всё равно нет — проверяем редиректы или 404
+  // Если страницы всё равно нет — возвращаем обычный 404
   if (!displayPage) {
-    return <PayloadRedirects url={url} />
+    return notFound()
   }
 
   const { hero, layout } = displayPage
@@ -83,8 +83,6 @@ export default async function Page({ params: paramsPromise }: Args) {
   return (
     <article className="pt-1 pb-24">
       <PageClient />
-      {/* PayloadRedirects обрабатывает автоматические редиректы из админки */}
-      <PayloadRedirects disableNotFound url={url} />
 
       {/* Включаем Live Preview, если активен режим черновика */}
       {draft && <LivePreviewListener />}
