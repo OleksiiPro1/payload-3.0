@@ -17,7 +17,6 @@ import { Content } from '../../blocks/Content/config'
 import { FormBlock } from '../../blocks/Form/config'
 import { MediaBlock } from '../../blocks/MediaBlock/config'
 import { hero } from '@/heros/config'
-
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { revalidateDelete, revalidatePage } from './hooks/revalidatePage'
@@ -145,6 +144,7 @@ export const Pages: CollectionConfig<'pages'> = {
       name: 'slug',
       type: 'text',
       index: true,
+      unique: true,
       label: 'Slug',
       required: false,
       admin: {
