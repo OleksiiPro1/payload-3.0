@@ -19,6 +19,7 @@ export default async function Page({
   const result = await payload.find({
     collection: 'pages',
     locale: activeLocale as any,
+    fallbackLocale: defaultLocale as any,
     where: {
       slug: { equals: slug },
     },
@@ -38,5 +39,4 @@ export default async function Page({
     </article>
   )
 }
-
 

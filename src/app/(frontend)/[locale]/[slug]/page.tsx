@@ -126,6 +126,7 @@ const queryPageBySlug = cache(async ({ slug, locale }: { slug: string; locale: s
     draft,
     limit: 1,
     locale: locale as any, // Передаем локаль в запрос к БД
+    fallbackLocale: defaultLocale as any,
     pagination: false,
     overrideAccess: draft,
     where: {
